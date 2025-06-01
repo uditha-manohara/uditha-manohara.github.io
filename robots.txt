@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://uditha-manohara.github.io/sitemap.xml
