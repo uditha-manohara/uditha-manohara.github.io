@@ -8,27 +8,61 @@
   <style>
     body {
       font-family: sans-serif;
+      margin: 0;
       padding: 2rem;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
+      min-height: 100vh;
     }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 0 1rem;
     }
-    .gallery img {
-      max-width: 100%;
+
+    .image-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 10px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s;
+    }
+
+    .image-card:hover {
+      transform: scale(1.05);
+    }
+
+    .image-card img {
+      width: 100%;
       height: auto;
-      border: 1px solid #ccc;
+      border-radius: 12px;
+      display: block;
     }
   </style>
 </head>
 <body>
   <h1>Image Gallery for SEO</h1>
   <div class="gallery">
-    <img src="/assets/images/Uditha-Manohara-Undergraduate-Engineer.jpeg" alt="Uditha Manohara - Undergraduate Software Engineer">
-    <img src="/assets/images/Uditha-Manohara-Engineer.jpeg" alt="Uditha Manohara">
-    <img src="/assets/images/Uditha-Manohara-Software-Engineer.jpeg" alt="Uditha Manohara - Software Engineer">
-    <!-- Add all image paths here -->
+    <div class="image-card">
+      <img src="/assets/images/Uditha-Manohara-Undergraduate-Engineer.jpeg" alt="Uditha Manohara - Undergraduate Software Engineer">
+    </div>
+    <div class="image-card">
+      <img src="/assets/images/Uditha-Manohara-Engineer.jpeg" alt="Uditha Manohara">
+    </div>
+    <div class="image-card">
+      <img src="/assets/images/Uditha-Manohara-Software-Engineer.jpeg" alt="Uditha Manohara - Software Engineer">
+    </div>
+    <!-- Add more image-card divs for additional images -->
   </div>
 </body>
 </html>
