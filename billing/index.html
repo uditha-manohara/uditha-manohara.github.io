@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustReceipt Pro - Advanced Receipt Generator</title>
+    <script src="assets/libraries/jspdf.umd.min.js"></script>
+    <script src="assets/libraries/html2canvas.min.js"></script>
+    <script src="assets/libraries/qrious.min.js"></script>
+    <script src="assets/libraries/JsBarcode.all.min.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>JustReceipt Pro</h1>
+            <p>Advanced Professional Receipt Generation System</p>
+        </div>
+
+        <div class="main-content">
+            <div class="form-section">
+                <h2>🏢 Business Information</h2>
+                <div class="form-group">
+                    <label>Business Name</label>
+                    <input type="text" id="businessName" placeholder="Your Business Name" value="Termodev Technologies">
+                </div>
+                <div class="form-group">
+                    <label>Business Address</label>
+                    <textarea id="businessAddress" rows="3" placeholder="Your complete business address">123 Business Avenue, Suite 100
+Professional District, State 12345</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" id="businessPhone" placeholder="+1 (555) 123-4567" value="+1 (555) 987-6543">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="businessEmail" placeholder="contact@yourbusiness.com"
+                        value="termodevtechnologies@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label>Tax ID / Business Registration</label>
+                    <input type="text" id="taxId" placeholder="Tax ID or Business Registration #" value="TAX-123456789">
+                </div>
+
+                <h2>👤 Customer Information</h2>
+                <div class="form-group">
+                    <label>Customer Name</label>
+                    <input type="text" id="customerName" placeholder="Customer Full Name">
+                </div>
+                <div class="form-group">
+                    <label>Customer Phone</label>
+                    <input type="text" id="customerPhone" placeholder="Customer Phone Number">
+                </div>
+                <div class="form-group">
+                    <label>Customer Email</label>
+                    <input type="email" id="customerEmail" placeholder="customer@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Customer Address</label>
+                    <textarea id="customerAddress" rows="2" placeholder="Customer address (optional)"></textarea>
+                </div>
+
+                <h2>💳 Payment Details</h2>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select id="paymentMethod">
+                        <option value="cash">💵 Cash Payment</option>
+                        <option value="bank_transfer">🏦 Bank Transfer</option>
+                        <option value="credit_card">💳 Credit Card</option>
+                        <option value="debit_card">💳 Debit Card</option>
+                        <option value="digital_wallet">📱 Digital Wallet</option>
+                        <option value="check">📄 Check</option>
+                        <option value="crypto">₿ Cryptocurrency</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Transaction ID / Reference</label>
+                    <input type="text" id="transactionId" placeholder="Transaction reference number">
+                </div>
+                <div class="form-group">
+                    <label>Tax Rate (%)</label>
+                    <input type="number" id="taxRate" placeholder="0" value="0" step="0.1" min="0" max="100">
+                </div>
+
+                <h2>🛍️ Items & Services</h2>
+                <div class="items-section" id="itemsContainer">
+                    <div class="item-row">
+                        <input type="text" placeholder="Item/Service description" class="item-desc">
+                        <input type="number" placeholder="Qty" class="item-qty" min="1">
+                        <input type="number" placeholder="Price" class="item-price" step="0.01" min="0">
+                        <button class="remove-btn" onclick="removeItem(this)">×</button>
+                    </div>
+                </div>
+                <button class="add-item-btn" onclick="addItem()">+ Add New Item</button>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <button class="btn" onclick="generateReceipt()">🧾 Generate Receipt</button>
+                    <button class="btn secondary" onclick="downloadPDF()">📄 Download PDF</button>
+                    <button class="btn success" onclick="saveReceipt()">💾 Save Receipt</button>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <div class="receipt-preview" id="receiptPreview">
+                    <div class="receipt-header">
+                        <h1>Termodev Technologies</h1>
+                        <div class="subtitle">Service Receipt</div>
+                        <div style="font-size: 12px; margin-top: 10px;">
+                            Receipt ID: <span id="previewReceiptNumber">RCP-1001</span>
+                        </div>
+                    </div>
+
+                    <div class="receipt-info">
+                        <div class="info-section">
+                            <h3>From (Business)</h3>
+                            <div id="previewBusinessName">Termodev Technologies</div>
+                            <div id="previewBusinessAddress">123 Business Avenue, Suite 100<br>Professional District,
+                                State 12345</div>
+                            <div style="margin-top: 10px;">
+                                📞 <span id="previewBusinessPhone">+1 (555) 987-6543</span><br>
+                                ✉️ <span id="previewBusinessEmail">termodevtechnologies@gmail.com</span><br>
+                                🏛️ <span id="previewTaxId">TAX-123456789</span>
+                            </div>
+                        </div>
+                        <div class="info-section">
+                            <h3>To (Customer)</h3>
+                            <div id="previewCustomerName">Customer Name</div>
+                            <div id="previewCustomerPhone">Customer Phone</div>
+                            <div id="previewCustomerEmail">Customer Email</div>
+                            <div id="previewCustomerAddress">Customer Address</div>
+                            <div style="margin-top: 15px;">
+                                <strong>Date:</strong> <span id="previewDate"></span><br>
+                                <strong>Time:</strong> <span id="previewTime"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="receipt-items">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Qty</th>
+                                    <th>Unit Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="previewItems">
+                                <tr>
+                                    <td>Professional Service</td>
+                                    <td>1</td>
+                                    <td>$100.00</td>
+                                    <td>$100.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="receipt-total">
+                        <div class="total-line">
+                            <span>Subtotal:</span>
+                            <span>Rs <span id="previewSubtotal">100.00</span></span>
+                        </div>
+                        <div class="total-line">
+                            <span>Tax (<span id="previewTaxRate">8.5</span>%):</span>
+                            <span>Rs <span id="previewTax">8.50</span></span>
+                        </div>
+                        <div class="total-line">
+                            <span>Discount:</span>
+                            <span>Rs <span id="previewDiscount">0.00</span></span>
+                        </div>
+                        <div class="total-line grand-total">
+                            <span>TOTAL AMOUNT:</span>
+                            <span>Rs <span id="previewTotal">108.50</span></span>
+                        </div>
+                    </div>
+
+                    <div class="payment-info">
+                        <strong>💳 Payment Method:</strong> <span id="previewPaymentMethod">💵 Cash Payment</span><br>
+                        <strong>🔖 Transaction ID:</strong> <span id="previewTransactionId">N/A</span><br>
+                        <strong>✅ Payment Status:</strong> <span style="color: #38a169; font-weight: bold;">PAID IN
+                            FULL</span>
+                    </div>
+
+                    <div class="codes-section">
+                        <div class="qr-container">
+                            <h4>QR Code - Receipt Verification</h4>
+                            <div id="qrcode"></div>
+                            <div style="font-size: 10px; margin-top: 8px; color: #718096;">
+                                Scan to verify receipt authenticity
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="receipt-footer">
+                        <p><strong>Thank you for your business!</strong></p>
+                        <p>This is an official receipt generated by Termodev Technologies</p>
+                        <p>For inquiries, contact us using the information above</p>
+                        <a href="https://uditha-manohara.github.io" class="website-link" target="_blank">
+                            🌐 System Developed by Uditha Manohara
+                        </a>
+                        <p style="margin-top: 15px; font-size: 10px;">
+                            Generated on: <span id="generatedDateTime"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <h2>📊 Dashboard & Receipt History</h2>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <h3 id="totalReceipts">0</h3>
+                    <p>Total Receipts</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalRevenue">Rs 0.00</h3>
+                    <p>Total Revenue</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="monthlyReceipts">0</h3>
+                    <p>This Month</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="avgReceiptValue">Rs 0.00</h3>
+                    <p>Average Value</p>
+                </div>
+            </div>
+
+            <div id="receiptHistory">
+                <p style="text-align: center; color: #718096; padding: 40px;">
+                    No receipts saved yet. Generate and save your first professional receipt!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
