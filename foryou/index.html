@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Princess 💌</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div id="login">
+      <h1>Welcome, My Princess 👀</h1>
+      <p>Enter your secret word below 💜</p>
+      <input type="password" id="password" placeholder="Password..." />
+      <button onclick="unlock()">Open Letter</button>
+      <p id="error" class="error"></p>
+    </div>
+
+    <div id="letter" class="hidden">
+      <h2>💌 From Him to You</h2>
+      <p class="message">I Love You Forever Sudu</p>
+      <p class="foot">Yours forever,<br>💖 Buwalla</p>
+      <audio controls autoplay loop>
+        <source src="assets/music.mp3" type="audio/mp3" />
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
