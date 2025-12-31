@@ -1,0 +1,82 @@
+/* V6 Editorial Design System */
+
+/* Reset & Basics */
+:root {
+    --cursor-size: 20px;
+}
+
+body {
+    cursor: none; /* Custom cursor everywhere */
+}
+
+/* Typography Enhancements */
+.font-display {
+    font-family: 'Clash Display', sans-serif;
+}
+
+.font-sans {
+    font-family: 'General Sans', sans-serif;
+}
+
+/* Custom Cursor */
+#cursor-dot,
+#cursor-circle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#cursor-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #7c3aed; /* Purple 600 */
+}
+
+#cursor-circle {
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    border: 1px solid rgba(124, 58, 237, 0.5); /* Purple border */
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* Hover States for Cursor */
+body.hover-link #cursor-circle {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(124, 58, 237, 0.1);
+    border-color: transparent;
+}
+
+/* Effects */
+.hover-underline-purple {
+    position: relative;
+    cursor: pointer;
+}
+
+.hover-underline-purple::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #7c3aed;
+    bottom: 0px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.hover-underline-purple:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Selection */
+::selection {
+    background: #f3e8ff; /* Purple 100 */
+    color: #4c1d95; /* Purple 900 */
+}
