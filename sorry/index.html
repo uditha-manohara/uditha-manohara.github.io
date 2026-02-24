@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol: Apology</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=JetBrains+Mono:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --purple-glow: #6a0dad;
+            --neon-magenta: #ff00ff;
+            --electric-violet: #8f00ff;
+            --cyber-blue: #00fbff;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #1a052a 0%, var(--bg-dark) 80%);
+            font-family: 'JetBrains Mono', monospace;
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Glitch effect for the whole screen */
+        .glitch-active {
+            animation: glitch-anim 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+            filter: hue-rotate(90deg) invert(10%);
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                transform: translate(0)
+            }
+
+            20% {
+                transform: translate(-10px, 10px)
+            }
+
+            40% {
+                transform: translate(-10px, -10px)
+            }
+
+            60% {
+                transform: translate(10px, 10px)
+            }
+
+            80% {
+                transform: translate(10px, -10px)
+            }
+
+            100% {
+                transform: translate(0)
+            }
+        }
+
+        /* Terminal Area */
+        .terminal {
+            position: absolute;
+            top: 6%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            max-width: 800px;
+            z-index: 10;
+            pointer-events: none;
+            padding: 25px;
+            border-left: 4px solid var(--neon-magenta);
+            background: rgba(10, 10, 10, 0.65);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .terminal-header {
+            color: var(--neon-magenta);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 6px var(--neon-magenta);
+            letter-spacing: 1px;
+        }
+
+        .typewriter-text {
+            color: var(--cyber-blue);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-shadow: 0 0 5px rgba(0, 251, 255, 0.6);
+            min-height: 120px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.1rem;
+            background: var(--cyber-blue);
+            box-shadow: 0 0 8px var(--cyber-blue);
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Matter.js Canvas Styling */
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* Gives all drawn elements a cool cyber glow */
+            filter: drop-shadow(0 0 8px var(--cyber-blue)) drop-shadow(0 0 4px var(--neon-magenta));
+        }
+
+        /* Cybernetic Heart Core (DOM Element) */
+        .cyber-core-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .cyber-core {
+            width: 70px;
+            height: 70px;
+            border: 2px solid var(--neon-magenta);
+            box-shadow: 0 0 20px var(--neon-magenta), inset 0 0 20px var(--neon-magenta);
+            transform: rotate(45deg);
+            animation: pulsate 1.5s infinite alternate, rotateCore 12s linear infinite;
+            position: relative;
+            background: rgba(255, 0, 255, 0.1);
+        }
+
+        .cyber-core::before,
+        .cyber-core::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid var(--electric-violet);
+            box-shadow: 0 0 10px var(--electric-violet);
+        }
+
+        .cyber-core::before {
+            transform: rotate(30deg);
+        }
+
+        .cyber-core::after {
+            transform: rotate(60deg);
+        }
+
+        .cyber-core-wrapper:hover .cyber-core {
+            border-color: #fff;
+            animation: pulsate-hover 0.5s infinite alternate, rotateCore 2s linear infinite;
+        }
+
+        @keyframes pulsate {
+            0% {
+                box-shadow: 0 0 15px var(--neon-magenta), inset 0 0 10px var(--neon-magenta);
+            }
+
+            100% {
+                box-shadow: 0 0 35px var(--neon-magenta), inset 0 0 25px var(--neon-magenta);
+            }
+        }
+
+        @keyframes pulsate-hover {
+            0% {
+                box-shadow: 0 0 30px #fff, inset 0 0 20px #fff;
+            }
+
+            100% {
+                box-shadow: 0 0 50px var(--neon-magenta), inset 0 0 40px var(--neon-magenta);
+            }
+        }
+
+        @keyframes rotateCore {
+            100% {
+                transform: rotate(405deg);
+            }
+        }
+
+        /* Modal Overlay Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: rgba(15, 15, 15, 0.85);
+            border: 1px solid var(--cyber-blue);
+            box-shadow: 0 0 40px rgba(0, 251, 255, 0.15), inset 0 0 20px rgba(0, 251, 255, 0.05);
+            padding: 50px 40px;
+            border-radius: 4px;
+            text-align: center;
+            max-width: 90%;
+            width: 480px;
+            position: relative;
+        }
+
+        /* Cyber-tech scanline inside modal */
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--cyber-blue);
+            box-shadow: 0 0 10px var(--cyber-blue);
+            animation: scanline 3s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% {
+                top: 0;
+                opacity: 1;
+            }
+
+            50% {
+                top: 100%;
+                opacity: 0.5;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+
+        .btn-cyber {
+            display: inline-block;
+            background: transparent;
+            color: var(--neon-magenta);
+            border: 2px solid var(--neon-magenta);
+            text-decoration: none;
+            padding: 16px 45px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.2), inset 0 0 10px rgba(255, 0, 255, 0.1);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cyber:hover {
+            background: var(--neon-magenta);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 5px #fff;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .terminal {
+                top: 3%;
+                width: 90%;
+                padding: 15px;
+            }
+
+            .typewriter-text {
+                font-size: 0.95rem;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+
+            .btn-cyber {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Terminal Output -->
+    <div class="terminal">
+        <div class="terminal-header">&gt; TO THE GIRL WHO MEANS THE WORLD TO ME...</div>
+        <div class="typewriter-text"><span id="typewriter"></span><span class="cursor"></span></div>
+    </div>
+
+    <!-- Center Interactive Core -->
+    <div class="cyber-core-wrapper" id="core-trigger">
+        <div class="cyber-core"></div>
+    </div>
+
+    <!-- Hidden Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">MY PROMISE TO YOU</h2>
+            <div id="password-section">
+                <p style="color: var(--cyber-blue); margin-bottom: 20px; font-size: 0.95rem;">If you know me better than
+                    me, guess the password and enter it to unlock.</p>
+                <input type="password" id="surprise-password" placeholder="Enter password..."
+                    style="padding: 12px; font-family: 'JetBrains Mono', monospace; background: rgba(0,0,0,0.5); border: 1px solid var(--neon-magenta); color: #fff; width: 70%; max-width: 250px; outline: none; text-align: center; border-radius: 4px; box-shadow: inset 0 0 10px rgba(255,0,255,0.2);">
+                <br>
+                <button id="unlock-btn" class="btn-cyber"
+                    style="padding: 10px 30px; font-size: 1rem; margin-top: 20px; cursor: pointer;">UNLOCK</button>
+                <p id="password-error"
+                    style="color: #ff0044; display: none; margin-top: 15px; font-size: 0.9rem; text-shadow: 0 0 5px #ff0044;">
+                    Incorrect password. Try again.</p>
+            </div>
+            <a href="EthicalHacker.pdf" class="btn-cyber" id="surprise-link" target="_blank" style="display: none;">A
+                Little Surprise</a>
+        </div>
+    </div>
+
+    <!-- Libraries -->
+    <!-- Matter.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        // ==========================================
+        // 1. Terminal Typewriter Effect
+        // ==========================================
+        const text = "I am so incredibly sorry for how I behaved. My words were wrong, and I hate that I hurt the person who supports me most. While we were apart today, I wanted to build something to show you that I'm working hard for us. Please click the glowing heart in the center...";
+        const typewriterEl = document.getElementById('typewriter');
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < text.length) {
+                typewriterEl.innerHTML += text.charAt(charIndex);
+                charIndex++;
+                // Slight randomization for a more realistic terminal writing feel
+                setTimeout(typeWriter, Math.random() * 30 + 30);
+            }
+        }
+
+        setTimeout(typeWriter, 1000); // 1-second delay before typing starts
+
+        // ==========================================
+        // 2. Antigravity Engine Setup (Matter.js)
+        // ==========================================
+        const Engine = Matter.Engine,
+            Render = Matter.Render,
+            Runner = Matter.Runner,
+            Bodies = Matter.Bodies,
+            Composite = Matter.Composite,
+            Mouse = Matter.Mouse,
+            MouseConstraint = Matter.MouseConstraint,
+            Events = Matter.Events;
+
+        const engine = Engine.create();
+
+        // Zero gravity
+        engine.gravity.y = 0;
+        engine.gravity.x = 0;
+
+        const render = Render.create({
+            element: document.body,
+            engine: engine,
+            options: {
+                width: window.innerWidth,
+                height: window.innerHeight,
+                wireframes: false,
+                background: 'transparent'
+            }
+        });
+
+        Render.run(render);
+        const runner = Runner.create();
+        Runner.run(runner, engine);
+
+        // Keep bodies in screen bounds
+        const wallOptions = { isStatic: true, restitution: 1, friction: 0, render: { visible: false } };
+        let ground, ceiling, leftWall, rightWall;
+
+        function setupWalls() {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const t = 100;
+
+            ground = Bodies.rectangle(w / 2, h + t / 2, w, t, wallOptions);
+            ceiling = Bodies.rectangle(w / 2, -t / 2, w, t, wallOptions);
+            leftWall = Bodies.rectangle(-t / 2, h / 2, t, h, wallOptions);
+            rightWall = Bodies.rectangle(w + t / 2, h / 2, t, h, wallOptions);
+
+            Composite.add(engine.world, [ground, ceiling, leftWall, rightWall]);
+        }
+        setupWalls();
+
+        window.addEventListener('resize', () => {
+            render.canvas.width = window.innerWidth;
+            render.canvas.height = window.innerHeight;
+
+            Matter.Composite.remove(engine.world, [ground, ceiling, leftWall, rightWall]);
+            setupWalls();
+
+            if (coreBody) {
+                Matter.Body.setPosition(coreBody, { x: window.innerWidth / 2, y: window.innerHeight / 2 });
+            }
+        });
+
+        // ==========================================
+        // 3. Cyber Junk Generation (SVGs)
+        // ==========================================
+
+        // SVGs encoded as Data URIs
+        const hexSVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" fill="none" stroke="%238f00ff" stroke-width="4"/></svg>`;
+        const diamondSVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,5 95,50 50,95 5,50" fill="none" stroke="%2300fbff" stroke-width="6"/></svg>`;
+        const techHeartSVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,90 L10,50 L10,20 L30,10 L50,30 L70,10 L90,20 L90,50 Z" fill="none" stroke="%23ff00ff" stroke-width="5"/></svg>`;
+        const binary1SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="70" font-family="monospace" font-weight="bold" font-size="60" fill="%2300fbff" text-anchor="middle">1</text></svg>`;
+        const binary0SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="70" font-family="monospace" font-weight="bold" font-size="60" fill="%238f00ff" text-anchor="middle">0</text></svg>`;
+
+        const textures = [hexSVG, diamondSVG, techHeartSVG, binary1SVG, binary0SVG];
+        const numJunk = 30;
+
+        for (let i = 0; i < numJunk; i++) {
+            const size = Math.random() * 20 + 15; // Radius
+            const x = Math.random() * (window.innerWidth - 100) + 50;
+            const y = Math.random() * (window.innerHeight - 100) + 50;
+            const tex = textures[Math.floor(Math.random() * textures.length)];
+
+            const body = Bodies.circle(x, y, size, {
+                restitution: 1.05,     // Very bouncy
+                frictionAir: 0.005,    // Floats effortlessly
+                friction: 0,
+                render: {
+                    sprite: {
+                        texture: tex,
+                        xScale: (size * 2) / 100,
+                        yScale: (size * 2) / 100
+                    }
+                }
+            });
+
+            // Random spin & velocity
+            Matter.Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.1);
+            Matter.Body.setVelocity(body, {
+                x: (Math.random() - 0.5) * 4,
+                y: (Math.random() - 0.5) * 4
+            });
+
+            Composite.add(engine.world, body);
+        }
+
+        // Invisible static body behind the DOM core to interact with floating junk
+        const coreBody = Bodies.circle(window.innerWidth / 2, window.innerHeight / 2, 70, {
+            isStatic: true,
+            restitution: 1.5,
+            render: { visible: false }
+        });
+        Composite.add(engine.world, coreBody);
+
+        // ==========================================
+        // 4. Cyber-Fluid Interaction
+        // ==========================================
+
+        const mouse = Mouse.create(render.canvas);
+        // Do not add MouseConstraint, because we only want repel behavior, not drag-and-drop.
+        render.mouse = mouse;
+
+        Events.on(engine, 'beforeUpdate', function () {
+            // High sensitivity repel from mouse
+            if (mouse.position.x !== 0 && mouse.position.y !== 0) {
+                engine.world.bodies.forEach(body => {
+                    if (body.isStatic) return;
+
+                    const dx = body.position.x - mouse.position.x;
+                    const dy = body.position.y - mouse.position.y;
+                    const distSq = dx * dx + dy * dy;
+
+                    // Interaction radius
+                    if (distSq < 30000 && distSq > 0) {
+                        const forceMagnitude = 1.0 / distSq;
+                        Matter.Body.applyForce(body, body.position, {
+                            x: dx * forceMagnitude,
+                            y: dy * forceMagnitude
+                        });
+                    }
+                });
+            }
+
+            // Enforce minimum speeds to keep the system looking 'alive' safely
+            engine.world.bodies.forEach(body => {
+                if (!body.isStatic) {
+                    const speed = Matter.Vector.magnitude(body.velocity);
+                    if (speed < 0.5 && engine.gravity.y === 0) {
+                        Matter.Body.applyForce(body, body.position, {
+                            x: (Math.random() - 0.5) * 0.0005,
+                            y: (Math.random() - 0.5) * 0.0005
+                        });
+                    }
+                    // Speed limit
+                    if (speed > 10) {
+                        Matter.Body.setVelocity(body, {
+                            x: body.velocity.x * 0.9,
+                            y: body.velocity.y * 0.9
+                        });
+                    }
+                }
+            });
+        });
+
+        // ==========================================
+        // 5. The Surprise (Glitch & Gravity Drop)
+        // ==========================================
+        const coreTrigger = document.getElementById('core-trigger');
+        let triggered = false;
+
+        coreTrigger.addEventListener('click', () => {
+            if (triggered) return;
+            triggered = true;
+
+            // 1. Glitch Effect on whole screen
+            document.body.classList.add('glitch-active');
+            setTimeout(() => {
+                document.body.classList.remove('glitch-active');
+            }, 400); // Glitch for 400ms
+
+            // Shrink and hide the core element
+            coreTrigger.style.transform = 'translate(-50%, -50%) scale(0)';
+            coreTrigger.style.opacity = '0';
+
+            // Remove the invisible core body
+            Matter.Composite.remove(engine.world, coreBody);
+
+            // 2. Cyber Confetti Blast
+            const duration = 2500;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 80,
+                    origin: { x: 0, y: 0.8 },
+                    colors: ['#ff00ff', '#8f00ff', '#00fbff', '#ffffff'],
+                    shapes: ['square'], // blocky cyber shards
+                    ticks: 200,
+                    gravity: 1.5,
+                    scalar: 1.2
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 80,
+                    origin: { x: 1, y: 0.8 },
+                    colors: ['#ff00ff', '#8f00ff', '#00fbff', '#ffffff'],
+                    shapes: ['square'],
+                    ticks: 200,
+                    gravity: 1.5,
+                    scalar: 1.2
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+
+            // 3. Gravity Drop (Sudden crushing gravity)
+            setTimeout(() => {
+                engine.gravity.y = 2.0;
+
+                // Randomize angular velocity for a chaotic shattered look
+                engine.world.bodies.forEach(body => {
+                    if (!body.isStatic) {
+                        Matter.Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.5);
+                    }
+                });
+            }, 300); // Drop slightly after glitch starts
+
+            // 4. Show the Glassmorphism Modal
+            setTimeout(() => {
+                const modal = document.getElementById('modal');
+                modal.classList.add('active');
+            }, 1800);
+        });
+
+        // ==========================================
+        // 6. Password Lock Logic
+        // ==========================================
+        const unlockBtn = document.getElementById('unlock-btn');
+        const passwordInput = document.getElementById('surprise-password');
+        const passwordError = document.getElementById('password-error');
+        const surpriseLink = document.getElementById('surprise-link');
+        const passwordSection = document.getElementById('password-section');
+
+        unlockBtn.addEventListener('click', () => {
+            if (passwordInput.value === "Janu@1539purple") {
+                passwordSection.style.display = 'none';
+                surpriseLink.style.display = 'inline-block';
+            } else {
+                passwordError.style.display = 'block';
+                // Shake animation for incorrect password
+                passwordInput.style.transform = "translateX(-5px)";
+                setTimeout(() => passwordInput.style.transform = "translateX(5px)", 50);
+                setTimeout(() => passwordInput.style.transform = "translateX(-5px)", 100);
+                setTimeout(() => passwordInput.style.transform = "translateX(5px)", 150);
+                setTimeout(() => passwordInput.style.transform = "translateX(0)", 200);
+            }
+        });
+
+        // Allow hitting Enter to submit
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                unlockBtn.click();
+            }
+        });
+
+    </script>
+</body>
+
+</html>
