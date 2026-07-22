@@ -1,33 +1,34 @@
 (() => {
   "use strict";
 
-  const root = document.documentElement;
-  root.classList.add("js");
-
   const header = document.querySelector("[data-header]");
   const menuButton = document.querySelector("[data-menu-button]");
   const navigation = document.querySelector("[data-navigation]");
   const navLinks = navigation ? [...navigation.querySelectorAll('a[href^="#"]')] : [];
-  const currentYear = document.querySelector("[data-current-year]");
+  const year = document.querySelector("[data-current-year]");
+  const progress = document.querySelector("[data-scroll-progress]");
 
-  if (currentYear) {
-    currentYear.textContent = String(new Date().getFullYear());
-  }
+  if (year) year.textContent = String(new Date().getFullYear());
 
-  const updateHeader = () => {
-    if (!header) return;
-    header.classList.toggle("is-scrolled", window.scrollY > 16);
+  const updateScrollUI = () => {
+    if (header) header.classList.toggle("is-scrolled", window.scrollY > 18);
+    if (progress) {
+      const maximum = document.documentElement.scrollHeight - window.innerHeight;
+      const value = maximum > 0 ? (window.scrollY / maximum) * 100 : 0;
+      progress.style.width = `${Math.min(100, Math.max(0, value))}%`;
+    }
   };
 
-  updateHeader();
-  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateScrollUI();
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
 
-  const closeMenu = () => {
+  const closeMenu = (restoreFocus = false) => {
     if (!menuButton || !navigation) return;
     menuButton.setAttribute("aria-expanded", "false");
     menuButton.setAttribute("aria-label", "Open navigation");
     navigation.classList.remove("is-open");
     document.body.classList.remove("menu-open");
+    if (restoreFocus) menuButton.focus();
   };
 
   if (menuButton && navigation) {
@@ -39,13 +40,10 @@
       document.body.classList.toggle("menu-open", !isOpen);
     });
 
-    navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+    navLinks.forEach((link) => link.addEventListener("click", () => closeMenu()));
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeMenu();
-        menuButton.focus();
-      }
+      if (event.key === "Escape" && navigation.classList.contains("is-open")) closeMenu(true);
     });
 
     document.addEventListener("click", (event) => {
@@ -53,9 +51,7 @@
         navigation.classList.contains("is-open") &&
         !navigation.contains(event.target) &&
         !menuButton.contains(event.target)
-      ) {
-        closeMenu();
-      }
+      ) closeMenu();
     });
 
     window.addEventListener("resize", () => {
@@ -63,8 +59,8 @@
     });
   }
 
-  const revealElements = [...document.querySelectorAll(".reveal")];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealElements = [...document.querySelectorAll(".reveal")];
 
   if (reduceMotion || !("IntersectionObserver" in window)) {
     revealElements.forEach((element) => element.classList.add("is-visible"));
@@ -79,30 +75,25 @@
       },
       { rootMargin: "0px 0px -8%", threshold: 0.08 },
     );
-
     revealElements.forEach((element) => revealObserver.observe(element));
   }
 
   const sections = [...document.querySelectorAll("main section[id]")];
-
-  if ("IntersectionObserver" in window && navLinks.length > 0) {
+  if ("IntersectionObserver" in window && navLinks.length) {
     const sectionObserver = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
         if (!visible) return;
-
         navLinks.forEach((link) => {
           const active = link.getAttribute("href") === `#${visible.target.id}`;
           if (active) link.setAttribute("aria-current", "true");
           else link.removeAttribute("aria-current");
         });
       },
-      { rootMargin: "-30% 0px -55%", threshold: [0.05, 0.2, 0.5] },
+      { rootMargin: "-28% 0px -60%", threshold: [0.05, 0.2, 0.45] },
     );
-
     sections.forEach((section) => sectionObserver.observe(section));
   }
 })();

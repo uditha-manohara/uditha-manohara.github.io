@@ -1,45 +1,12 @@
-# SEO and Entity Consistency Checklist
+# SEO and launch checklist
 
-## On-page
-
-- [x] One clear H1 containing the full name
-- [x] Current Neziora identity visible in the hero and company section
-- [x] Unique title and meta description
-- [x] Canonical URL
-- [x] Open Graph and Twitter card metadata
-- [x] Crawlable HTML links
-- [x] Semantic headings and landmarks
-- [x] Accessible image alternative text
-- [x] Mobile-responsive layout
-- [x] Reduced-motion support
-
-## Structured data
-
-- [x] WebSite
-- [x] ProfilePage
-- [x] Person
-- [x] Neziora Solutions Organization
-- [x] Founder relationship
-- [x] Current social profile links
-- [x] Date modified
-
-## Crawling and indexing
-
-- [x] `robots.txt`
-- [x] `sitemap.xml`
-- [x] `index, follow` robots metadata
-- [x] Branded 404 page with `noindex`
-- [x] GitHub Pages `CNAME`
-
-## After publishing
-
-- [ ] Check every page and asset returns successfully
-- [ ] Test with Google Rich Results Test
-- [ ] Test with Schema Markup Validator
-- [ ] Test mobile usability
-- [ ] Test Lighthouse performance and accessibility
-- [ ] Submit sitemap in Search Console
-- [ ] Request indexing for the homepage
-- [ ] Update LinkedIn, GitHub, Facebook, X, and other profiles with the same current biography
-- [ ] Remove or update public old-brand pages still controlled by the founder
-- [ ] Add the final Neziora company domain after launch
+- [ ] Confirm `udithamanohara.dev` loads with HTTPS
+- [ ] Confirm the canonical URL is `https://udithamanohara.dev/`
+- [ ] Confirm `/robots.txt` and `/sitemap.xml` return HTTP 200
+- [ ] Confirm `/assets/images/og-image.png` is publicly accessible
+- [ ] Test metadata in a social-card preview tool
+- [ ] Validate JSON-LD in Google Rich Results Test or Schema Markup Validator
+- [ ] Submit the sitemap to Google Search Console
+- [ ] Request indexing for the homepage after publishing
+- [ ] Keep LinkedIn, GitHub, Facebook, and Neziora profiles consistent
+- [ ] Replace or redirect any remaining public Crystonik/Termodev pages you control

@@ -14,7 +14,7 @@
     <meta name="publisher" content="Uditha Manohara Prasad" />
     <meta name="application-name" content="Uditha Manohara Prasad" />
     <meta name="theme-color" content="#0f172a" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
     <meta
       name="robots"
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
@@ -78,9 +78,7 @@
             "alternateName": "Uditha Manohara",
             "description": "Official portfolio of Sri Lankan software engineer and Neziora Solutions founder Uditha Manohara Prasad.",
             "inLanguage": "en",
-            "publisher": {
-              "@id": "https://udithamanohara.dev/#person"
-            }
+            "publisher": { "@id": "https://udithamanohara.dev/#person" }
           },
           {
             "@type": "ProfilePage",
@@ -88,12 +86,8 @@
             "url": "https://udithamanohara.dev/",
             "name": "Uditha Manohara Prasad — Software Engineer and Founder",
             "description": "Professional profile of Uditha Manohara Prasad, a Sri Lankan software engineer and founder of Neziora Solutions.",
-            "isPartOf": {
-              "@id": "https://udithamanohara.dev/#website"
-            },
-            "mainEntity": {
-              "@id": "https://udithamanohara.dev/#person"
-            },
+            "isPartOf": { "@id": "https://udithamanohara.dev/#website" },
+            "mainEntity": { "@id": "https://udithamanohara.dev/#person" },
             "dateModified": "2026-07-22",
             "inLanguage": "en"
           },
@@ -105,19 +99,12 @@
             "additionalName": "Manohara",
             "familyName": "Prasad",
             "url": "https://udithamanohara.dev/",
+            "image": "https://udithamanohara.dev/assets/images/og-image.png",
             "jobTitle": "Software Engineer and Founder of Neziora Solutions",
             "description": "Sri Lankan software engineer, full-stack developer, and founder of Neziora Solutions, focused on identifying real-world problems and creating practical digital solutions.",
-            "homeLocation": {
-              "@type": "Place",
-              "name": "Colombo, Sri Lanka"
-            },
-            "nationality": {
-              "@type": "Country",
-              "name": "Sri Lanka"
-            },
-            "worksFor": {
-              "@id": "https://udithamanohara.dev/#neziora"
-            },
+            "homeLocation": { "@type": "Place", "name": "Colombo, Sri Lanka" },
+            "nationality": { "@type": "Country", "name": "Sri Lanka" },
+            "worksFor": { "@id": "https://udithamanohara.dev/#neziora" },
             "affiliation": {
               "@type": "CollegeOrUniversity",
               "name": "Java Institute for Advanced Technology",
@@ -150,13 +137,8 @@
               "@type": "ImageObject",
               "url": "https://udithamanohara.dev/assets/brand/neziora-logo-lockup.png"
             },
-            "founder": {
-              "@id": "https://udithamanohara.dev/#person"
-            },
-            "foundingLocation": {
-              "@type": "Place",
-              "name": "Sri Lanka"
-            }
+            "founder": { "@id": "https://udithamanohara.dev/#person" },
+            "foundingLocation": { "@type": "Place", "name": "Sri Lanka" }
           }
         ]
       }
@@ -169,355 +151,314 @@
 
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
 
     <header class="site-header" data-header>
-      <div class="container header-inner">
-        <a class="brand" href="#top" aria-label="Uditha Manohara Prasad — home">
-          <img
-            class="brand-emblem"
-            src="/assets/brand/neziora-emblem.png"
-            width="813"
-            height="843"
-            alt=""
-          />
-          <span class="brand-copy">
-            <strong>Uditha Manohara</strong>
-            <span>Software Engineer</span>
-          </span>
+      <div class="shell header-grid">
+        <a class="site-mark" href="#top" aria-label="Uditha Manohara Prasad — homepage">
+          <img src="/assets/brand/neziora-emblem.png" width="813" height="843" alt="" />
+          <span><strong>UMP</strong><small>Problem → Solution</small></span>
         </a>
 
         <button
-          class="menu-button"
+          class="menu-toggle"
           type="button"
           aria-expanded="false"
           aria-controls="primary-navigation"
           aria-label="Open navigation"
           data-menu-button
         >
-          <span></span><span></span><span></span>
+          <span></span><span></span>
         </button>
 
         <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation" data-navigation>
-          <a href="#about">About</a>
-          <a href="#approach">Approach</a>
+          <a href="#profile">Profile</a>
+          <a href="#method">Method</a>
           <a href="#neziora">Neziora</a>
           <a href="#work">Work</a>
           <a href="#education">Education</a>
-          <a class="nav-cta" href="#contact">Contact</a>
+          <a class="nav-contact" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a>
         </nav>
       </div>
     </header>
 
     <main id="main-content">
-      <section class="hero section" id="top" aria-labelledby="hero-title">
-        <div class="hero-grid container">
-          <div class="hero-content">
-            <p class="eyebrow reveal">Colombo, Sri Lanka · Working internationally</p>
-            <h1 id="hero-title" class="hero-title reveal">
-              Uditha Manohara <span>Prasad</span>
-            </h1>
-            <p class="hero-role reveal">
-              Sri Lankan software engineer, full-stack developer, and founder of
-              <strong>Neziora Solutions</strong>.
-            </p>
-            <p class="hero-summary reveal">
-              I find real-world problems, understand why they happen, and design practical technology
-              around them. Through Neziora, I apply that problem-first mindset to help businesses improve
-              operations and create meaningful advantages.
-            </p>
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-noise" aria-hidden="true"></div>
+        <div class="shell hero-layout">
+          <div class="hero-index reveal" aria-label="Profile index">
+            <span>01 / Profile</span>
+            <span>Colombo · Sri Lanka</span>
+          </div>
 
+          <div class="hero-copy">
+            <p class="kicker reveal">Software engineer · Founder · Problem solver</p>
+            <h1 id="hero-title" class="hero-title reveal">
+              <span class="hero-line">Uditha</span>
+              <span class="hero-line hero-line-accent">Manohara Prasad</span>
+            </h1>
+            <p class="hero-lead reveal">
+              I investigate real-world problems and engineer practical digital systems around them.
+              Through <strong>Neziora Solutions</strong>, I apply that mindset to businesses that need more
+              than something made only to look impressive.
+            </p>
             <div class="hero-actions reveal">
               <a class="button button-primary" href="#neziora">Explore Neziora</a>
-              <a class="button button-secondary" href="#contact">Start a conversation</a>
+              <a class="text-link" href="#method">See how I think <span aria-hidden="true">↓</span></a>
             </div>
-
-            <ul class="social-list reveal" aria-label="Professional profiles">
-              <li>
-                <a href="https://www.linkedin.com/in/uditha-manohara" target="_blank" rel="me noopener noreferrer">
-                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.5 8.2H3.2V21h3.3V8.2ZM4.9 3A1.9 1.9 0 1 0 5 6.8 1.9 1.9 0 0 0 4.9 3ZM21 13.7c0-3.9-2.1-5.8-4.9-5.8a4.3 4.3 0 0 0-3.9 2.1V8.2H9V21h3.3v-6.3c0-1.7.3-3.3 2.4-3.3s2.1 1.9 2.1 3.4V21H21v-7.3Z"/></svg>
-                  <span>LinkedIn</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/uditha-manohara" target="_blank" rel="me noopener noreferrer">
-                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.9c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.3-.3-4.7-1.2-4.7-5A3.9 3.9 0 0 1 7.8 8c-.1-.3-.5-1.4.1-2.9 0 0 .8-.3 3.3 1.1a11.4 11.4 0 0 1 6 0c2.4-1.4 3.3-1.1 3.3-1.1.6 1.5.2 2.6.1 2.9a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.8-4.7 5 .4.3.7 1 .7 2V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>
-                  <span>GitHub</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://facebook.com/udithamanohara.dev" target="_blank" rel="me noopener noreferrer">
-                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 8.5V6.8c0-.8.5-1 1-1h2.6V2.1L14.5 2C11.2 2 9 4 9 7.3v1.2H6V13h3v9h5v-9h3.3l.7-4.5H14Z"/></svg>
-                  <span>Facebook</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://x.com/uditha_manohara" target="_blank" rel="me noopener noreferrer">
-                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23.2 22H17l-4.9-6.4L6.5 22H3.3l7.3-8.4L2.8 2h6.4l4.4 5.9L18.9 2Zm-1.1 17.8h1.7L8.3 4H6.5l11.3 15.8Z"/></svg>
-                  <span>X</span>
-                </a>
-              </li>
-            </ul>
           </div>
 
-          <aside class="hero-visual reveal" aria-label="Problem-first solution process">
-            <div class="visual-glow"></div>
-            <div class="identity-card">
+          <aside class="solution-map reveal" aria-label="Problem-first solution map">
+            <div class="map-header">
+              <span>Live thinking model</span>
+              <strong>Problem → Advantage</strong>
+            </div>
+            <div class="map-canvas">
+              <div class="map-axis map-axis-x"></div>
+              <div class="map-axis map-axis-y"></div>
+              <div class="map-node node-problem">
+                <small>01</small><strong>Problem</strong><span>What is not working?</span>
+              </div>
+              <div class="map-node node-insight">
+                <small>02</small><strong>Insight</strong><span>Why does it happen?</span>
+              </div>
+              <div class="map-node node-solution">
+                <small>03</small><strong>Solution</strong><span>What should change?</span>
+              </div>
+              <div class="map-node node-value">
+                <small>04</small><strong>Advantage</strong><span>What becomes better?</span>
+              </div>
+              <div class="map-route" aria-hidden="true"></div>
               <img
-                src="/assets/brand/neziora-emblem.png"
+                class="map-emblem"
+                src="/assets/brand/neziora-emblem-white.png"
                 width="813"
                 height="843"
-                alt="Neziora Solutions geometric N emblem"
+                alt=""
               />
-              <div class="identity-card-copy">
-                <span>Current venture</span>
-                <strong>Neziora Solutions</strong>
-                <p>Custom Solutions. Real Business Advantage.</p>
-              </div>
             </div>
-            <div class="process-orbit" aria-hidden="true">
-              <span>Observe</span>
-              <span>Understand</span>
-              <span>Design</span>
-              <span>Deliver</span>
-            </div>
+            <p class="map-caption">Technology is selected after the objective is understood.</p>
           </aside>
+
+          <ul class="hero-socials reveal" aria-label="Professional profiles">
+            <li><a href="https://www.linkedin.com/in/uditha-manohara" target="_blank" rel="me noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://github.com/uditha-manohara" target="_blank" rel="me noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://facebook.com/udithamanohara.dev" target="_blank" rel="me noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://x.com/uditha_manohara" target="_blank" rel="me noopener noreferrer">X <span aria-hidden="true">↗</span></a></li>
+          </ul>
         </div>
-        <div class="hero-grid-lines" aria-hidden="true"></div>
       </section>
 
-      <section class="section section-soft" id="about" aria-labelledby="about-title">
-        <div class="container split-layout">
-          <div class="section-heading reveal">
-            <p class="eyebrow">About</p>
-            <h2 id="about-title">Engineering starts with understanding.</h2>
+      <section class="profile section" id="profile" aria-labelledby="profile-title">
+        <div class="shell dossier-grid">
+          <div class="section-label reveal"><span>02</span><p>Professional profile</p></div>
+
+          <div class="dossier-heading reveal">
+            <p class="eyebrow">About Uditha</p>
+            <h2 id="profile-title">I am interested in the gap between <em>how things work</em> and how they could work better.</h2>
           </div>
 
-          <div class="prose reveal">
+          <div class="dossier-copy reveal">
             <p class="lead">
-              I am a software engineering undergraduate and developer based in Colombo, Sri Lanka. My
-              strongest interest is finding real-world problems and turning them into useful, dependable
-              digital systems.
+              I am a Sri Lankan software engineering undergraduate and developer based in Colombo. My
+              strongest interest is discovering real problems, understanding the processes behind them,
+              and designing useful technology that improves the outcome.
             </p>
             <p>
-              I do not begin with a framework, a feature list, or a visual trend. I begin by studying the
-              people, process, limitations, and intended result. That approach helps me choose technology
-              because it fits the problem—not because it is fashionable.
+              My work covers full-stack web development, custom software, interface design, business
+              automation, and solution architecture. I do not begin with a framework or feature list. I
+              begin with the people, constraints, information, and result that matter.
             </p>
-            <p>
-              My work spans full-stack web development, custom software, user-interface design, business
-              automation, and solution architecture. I am especially interested in technology that reduces
-              repetitive effort, improves access to information, and enables better decisions.
-            </p>
-
-            <dl class="fact-grid" aria-label="Professional facts">
-              <div>
-                <dt>Current role</dt>
-                <dd>Founder &amp; Solutions Lead</dd>
-              </div>
-              <div>
-                <dt>Venture</dt>
-                <dd>Neziora Solutions</dd>
-              </div>
-              <div>
-                <dt>Location</dt>
-                <dd>Colombo, Sri Lanka</dd>
-              </div>
-              <div>
-                <dt>Focus</dt>
-                <dd>Problem-first technology</dd>
-              </div>
-            </dl>
           </div>
+
+          <dl class="profile-ledger reveal" aria-label="Professional details">
+            <div><dt>Current role</dt><dd>Founder &amp; Solutions Lead</dd></div>
+            <div><dt>Venture</dt><dd>Neziora Solutions</dd></div>
+            <div><dt>Location</dt><dd>Colombo, Sri Lanka</dd></div>
+            <div><dt>Core focus</dt><dd>Problem-first technology</dd></div>
+            <div><dt>Discipline</dt><dd>Software Engineering</dd></div>
+            <div><dt>Collaboration</dt><dd>Local &amp; international</dd></div>
+          </dl>
         </div>
       </section>
 
-      <section class="section" id="approach" aria-labelledby="approach-title">
-        <div class="container">
-          <div class="section-heading centered reveal">
-            <p class="eyebrow">My approach</p>
-            <h2 id="approach-title">Real problems before digital products.</h2>
-            <p>
-              Every valuable solution begins with evidence: what is happening now, who it affects, and
-              what a better outcome should look like.
-            </p>
+      <section class="method section" id="method" aria-labelledby="method-title">
+        <div class="shell">
+          <div class="method-intro reveal">
+            <div class="section-label section-label-light"><span>03</span><p>Working method</p></div>
+            <div>
+              <p class="eyebrow eyebrow-light">Problem-first engineering</p>
+              <h2 id="method-title">A solution is valuable only when it changes something that matters.</h2>
+            </div>
           </div>
 
-          <ol class="approach-grid">
-            <li class="approach-card reveal">
-              <span>01</span>
-              <h3>Observe</h3>
-              <p>Study the real environment, repeated work, delays, errors, and unmet needs.</p>
+          <ol class="method-track">
+            <li class="method-step reveal">
+              <div class="step-marker"><span>01</span></div>
+              <div><p>Observe</p><h3>Study the reality</h3><span>Repeated work, delays, errors, unmet needs, and the people affected.</span></div>
             </li>
-            <li class="approach-card reveal">
-              <span>02</span>
-              <h3>Understand</h3>
-              <p>Identify the root cause, users, constraints, risks, and desired business result.</p>
+            <li class="method-step reveal">
+              <div class="step-marker"><span>02</span></div>
+              <div><p>Understand</p><h3>Find the root cause</h3><span>Users, constraints, existing tools, risks, and the intended result.</span></div>
             </li>
-            <li class="approach-card reveal">
-              <span>03</span>
-              <h3>Design</h3>
-              <p>Choose the simplest suitable workflow, technology, and experience for the problem.</p>
+            <li class="method-step reveal">
+              <div class="step-marker"><span>03</span></div>
+              <div><p>Design</p><h3>Choose the right response</h3><span>The simplest suitable workflow, technology, and user experience.</span></div>
             </li>
-            <li class="approach-card reveal">
-              <span>04</span>
-              <h3>Deliver</h3>
-              <p>Build, validate, document, launch, and improve based on actual use and feedback.</p>
+            <li class="method-step reveal">
+              <div class="step-marker"><span>04</span></div>
+              <div><p>Deliver</p><h3>Build and validate</h3><span>Implement, test, document, launch, measure, and improve.</span></div>
             </li>
           </ol>
         </div>
       </section>
 
-      <section class="section neziora-section" id="neziora" aria-labelledby="neziora-title">
-        <div class="container neziora-grid">
-          <div class="neziora-brand reveal">
-            <div class="brand-panel">
-              <img
-                src="/assets/brand/neziora-logo-lockup.png"
-                width="1842"
-                height="700"
-                alt="Neziora Solutions logo"
-              />
+      <section class="neziora section" id="neziora" aria-labelledby="neziora-title">
+        <div class="shell neziora-layout">
+          <div class="neziora-stage reveal">
+            <div class="neziora-stage-top">
+              <span>Current venture</span>
+              <span>Founded in Sri Lanka</span>
+            </div>
+            <img
+              class="neziora-lockup"
+              src="/assets/brand/neziora-logo-lockup.png"
+              width="1842"
+              height="700"
+              alt="Neziora Solutions logo"
+            />
+            <blockquote>
+              “We do not build technology just to show. We build it to solve.”
+            </blockquote>
+            <div class="brand-palette" aria-label="Neziora brand palette">
+              <span title="Primary Blue #2563EB"></span>
+              <span title="Deep Navy #0F172A"></span>
+              <span title="Accent Sky #38BDF8"></span>
+              <span title="Slate Gray #64748B"></span>
             </div>
           </div>
 
-          <div class="neziora-copy reveal">
-            <p class="eyebrow eyebrow-light">Current venture</p>
-            <h2 id="neziora-title">Neziora Solutions</h2>
-            <p class="neziora-tagline">Custom Solutions. Real Business Advantage.</p>
+          <div class="neziora-content reveal">
+            <div class="section-label"><span>04</span><p>Neziora Solutions</p></div>
+            <p class="eyebrow">Custom Solutions. Real Business Advantage.</p>
+            <h2 id="neziora-title">A technology startup built around problems, not packages.</h2>
             <p>
-              Neziora Solutions is a problem-solving technology startup founded to help businesses turn
-              operational challenges into practical digital solutions.
+              Neziora Solutions helps businesses turn operational challenges into practical digital
+              solutions. The result may be custom software, a web platform, an application, automation,
+              a dashboard, an integration, or a new solution concept.
             </p>
             <p>
-              Instead of selling the same package to every client, Neziora studies the current process,
-              identifies the real limitation, and designs the most suitable response. The result may be
-              custom software, a web platform, an application, automation, a dashboard, an integration, or
-              an entirely new solution concept.
+              The format changes according to the problem. The standard does not: understand the need,
+              define the expected value, and deliver with clarity.
             </p>
-            <ul class="check-list">
-              <li>Custom software and business systems</li>
-              <li>Web platforms and applications</li>
-              <li>Business-process automation</li>
-              <li>Marketing tools and integrations</li>
-              <li>Data, dashboards, and reporting</li>
-              <li>Technology for social impact</li>
-            </ul>
-            <a class="button button-light" href="#contact">Discuss a business problem</a>
+            <div class="capability-grid" aria-label="Neziora capabilities">
+              <span>Custom software</span>
+              <span>Web platforms</span>
+              <span>Business automation</span>
+              <span>Marketing technology</span>
+              <span>Dashboards &amp; reporting</span>
+              <span>Social-impact technology</span>
+            </div>
+            <a class="button button-dark" href="#contact">Discuss a business problem</a>
           </div>
         </div>
       </section>
 
-      <section class="section section-soft" id="work" aria-labelledby="work-title">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Selected work and focus</p>
-            <h2 id="work-title">Useful technology, clearly explained.</h2>
-            <p>
-              I publish and develop work that reflects practical problem solving rather than decorative
-              experimentation alone.
-            </p>
+      <section class="work section" id="work" aria-labelledby="work-title">
+        <div class="shell">
+          <div class="work-heading reveal">
+            <div class="section-label"><span>05</span><p>Selected direction</p></div>
+            <div>
+              <p class="eyebrow">Work and focus</p>
+              <h2 id="work-title">Practical systems, local utility, and better workflows.</h2>
+            </div>
           </div>
 
-          <div class="work-grid">
-            <article class="work-card work-card-featured reveal">
-              <div class="work-meta"><span>Independent utility</span><span>Language technology</span></div>
-              <h3>UMP Singlish</h3>
-              <p>
-                A utility created to help users convert Singlish input into Sinhala Unicode text, designed
-                around a common local communication need.
-              </p>
-              <a href="https://github.com/uditha-manohara" target="_blank" rel="noopener noreferrer">
-                Explore my GitHub
-                <span aria-hidden="true">↗</span>
-              </a>
+          <div class="case-stack">
+            <article class="case-card case-featured reveal">
+              <div class="case-number">01</div>
+              <div class="case-tags"><span>Independent utility</span><span>Language technology</span></div>
+              <div class="case-copy">
+                <h3>UMP Singlish</h3>
+                <p>
+                  A utility created around a common local communication need: converting Singlish input
+                  into Sinhala Unicode text in a more useful workflow.
+                </p>
+              </div>
+              <a href="https://github.com/uditha-manohara" target="_blank" rel="noopener noreferrer" aria-label="Explore Uditha Manohara Prasad on GitHub">GitHub <span aria-hidden="true">↗</span></a>
             </article>
 
-            <article class="work-card reveal">
-              <div class="work-meta"><span>Business systems</span></div>
-              <h3>Custom operational platforms</h3>
-              <p>
-                Management systems, portals, workflows, and dashboards designed around the way an
-                organisation actually operates.
-              </p>
+            <article class="case-card reveal">
+              <div class="case-number">02</div>
+              <div class="case-tags"><span>Business systems</span></div>
+              <div class="case-copy">
+                <h3>Operational platforms</h3>
+                <p>Management systems, portals, dashboards, and workflows designed around how an organisation actually operates.</p>
+              </div>
+              <span class="case-status">Focus area</span>
             </article>
 
-            <article class="work-card reveal">
-              <div class="work-meta"><span>Automation</span></div>
-              <h3>Process and workflow improvement</h3>
-              <p>
-                Digital tools that reduce duplicated work, organise information, improve follow-up, and
-                make routine processes easier to manage.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="education" aria-labelledby="education-title">
-        <div class="container split-layout">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Education</p>
-            <h2 id="education-title">Learning that supports real delivery.</h2>
-          </div>
-
-          <div class="timeline reveal">
-            <article class="timeline-item">
-              <p class="timeline-label">Current degree</p>
-              <h3>BSc (Hons) in Software Engineering</h3>
-              <p>
-                Pursuing a Birmingham City University degree through the Java Institute for Advanced
-                Technology in Sri Lanka.
-              </p>
-            </article>
-            <article class="timeline-item">
-              <p class="timeline-label">Selected learning</p>
-              <h3>Computer science and software development</h3>
-              <p>
-                Continued study through programmes including Harvard CS50x and the University of
-                Helsinki’s Java Programming I &amp; II.
-              </p>
-            </article>
-            <article class="timeline-item">
-              <p class="timeline-label">Ongoing focus</p>
-              <h3>Business analysis, architecture, and responsible innovation</h3>
-              <p>
-                Building the ability to connect technical decisions with business processes, user needs,
-                reliability, security, and long-term value.
-              </p>
+            <article class="case-card reveal">
+              <div class="case-number">03</div>
+              <div class="case-tags"><span>Automation</span></div>
+              <div class="case-copy">
+                <h3>Workflow improvement</h3>
+                <p>Tools that reduce duplicated effort, organise information, improve follow-up, and make routine work easier to manage.</p>
+              </div>
+              <span class="case-status">Focus area</span>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-        <div class="container contact-grid">
-          <div class="contact-copy reveal">
-            <p class="eyebrow eyebrow-light">Contact</p>
-            <h2 id="contact-title">Have a real problem worth solving?</h2>
+      <section class="education section" id="education" aria-labelledby="education-title">
+        <div class="shell education-grid">
+          <div class="education-heading reveal">
+            <div class="section-label section-label-light"><span>06</span><p>Education</p></div>
+            <p class="eyebrow eyebrow-light">Academic and independent learning</p>
+            <h2 id="education-title">Technical learning connected to real delivery.</h2>
+          </div>
+
+          <div class="education-list">
+            <article class="education-item reveal">
+              <span class="education-year">Current</span>
+              <div><h3>BSc (Hons) in Software Engineering</h3><p>Pursuing a Birmingham City University degree through the Java Institute for Advanced Technology in Sri Lanka.</p></div>
+            </article>
+            <article class="education-item reveal">
+              <span class="education-year">Selected</span>
+              <div><h3>Computer science and software development</h3><p>Continued study through programmes including Harvard CS50x and the University of Helsinki’s Java Programming I &amp; II.</p></div>
+            </article>
+            <article class="education-item reveal">
+              <span class="education-year">Ongoing</span>
+              <div><h3>Business analysis and responsible innovation</h3><p>Connecting technical decisions with user needs, business processes, security, reliability, and long-term value.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact section" id="contact" aria-labelledby="contact-title">
+        <div class="shell contact-layout">
+          <div class="contact-heading reveal">
+            <div class="section-label"><span>07</span><p>Contact</p></div>
+            <p class="eyebrow">Begin with the problem</p>
+            <h2 id="contact-title">What should work better?</h2>
             <p>
-              Tell me what is not working, what takes too much time, or what result you want to achieve.
-              The conversation can begin with the problem—you do not need a technical specification.
+              Tell me what takes too much time, creates unnecessary difficulty, or prevents the result
+              you want. You do not need a technical specification to begin the conversation.
             </p>
+          </div>
+
+          <div class="contact-panel reveal">
+            <div class="contact-panel-top">
+              <img src="/assets/brand/neziora-emblem-white.png" width="813" height="843" alt="" />
+              <span>Open for relevant conversations</span>
+            </div>
             <a class="contact-email" href="mailto:udithamprasad@gmail.com">udithamprasad@gmail.com</a>
-          </div>
-
-          <div class="contact-card reveal">
-            <img
-              src="/assets/brand/neziora-emblem-white.png"
-              width="813"
-              height="843"
-              alt=""
-            />
-            <p>Available for software engineering, business solution discovery, and technology collaboration.</p>
-            <div class="contact-actions">
-              <a class="button button-light" href="mailto:udithamprasad@gmail.com">Send an email</a>
-              <a
-                class="button button-outline-light"
-                href="https://www.linkedin.com/in/uditha-manohara"
-                target="_blank"
-                rel="noopener noreferrer"
-                >LinkedIn</a
-              >
+            <p>Software engineering · Business solution discovery · Technology collaboration</p>
+            <div class="contact-links">
+              <a href="mailto:udithamprasad@gmail.com">Send email <span aria-hidden="true">↗</span></a>
+              <a href="https://www.linkedin.com/in/uditha-manohara" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/uditha-manohara" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </div>
@@ -525,18 +466,15 @@
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-grid">
-        <div class="footer-identity">
+      <div class="shell footer-layout">
+        <div class="footer-brand">
           <img src="/assets/brand/neziora-emblem-mono.png" width="813" height="843" alt="" />
-          <div>
-            <strong>Uditha Manohara Prasad</strong>
-            <p>Software Engineer · Founder of Neziora Solutions</p>
-          </div>
+          <div><strong>Uditha Manohara Prasad</strong><span>Software Engineer · Founder of Neziora Solutions</span></div>
         </div>
-        <div class="footer-meta">
-          <p>Colombo, Sri Lanka</p>
-          <p>Last updated July 2026</p>
-          <p>&copy; <span data-current-year>2026</span> Uditha Manohara Prasad.</p>
+        <div class="footer-details">
+          <span>Colombo, Sri Lanka</span>
+          <span>Last updated July 2026</span>
+          <span>&copy; <span data-current-year>2026</span> Uditha Manohara Prasad</span>
         </div>
       </div>
     </footer>
