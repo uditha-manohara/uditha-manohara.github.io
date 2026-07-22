@@ -1,79 +1,108 @@
-// Register GSAP Plugins
-gsap.registerPlugin(ScrollTrigger);
+(() => {
+  "use strict";
 
-// Custom Cursor Logic
-const cursorDot = document.getElementById('cursor-dot');
-const cursorCircle = document.getElementById('cursor-circle');
-let mouseX = 0, mouseY = 0;
-let circleX = 0, circleY = 0;
+  const root = document.documentElement;
+  root.classList.add("js");
 
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+  const header = document.querySelector("[data-header]");
+  const menuButton = document.querySelector("[data-menu-button]");
+  const navigation = document.querySelector("[data-navigation]");
+  const navLinks = navigation ? [...navigation.querySelectorAll('a[href^="#"]')] : [];
+  const currentYear = document.querySelector("[data-current-year]");
 
-    // Dot follows instantly
-    cursorDot.style.left = mouseX + 'px';
-    cursorDot.style.top = mouseY + 'px';
-});
+  if (currentYear) {
+    currentYear.textContent = String(new Date().getFullYear());
+  }
 
-// Smooth circle follow
-function animateCursor() {
-    circleX += (mouseX - circleX) * 0.15;
-    circleY += (mouseY - circleY) * 0.15;
+  const updateHeader = () => {
+    if (!header) return;
+    header.classList.toggle("is-scrolled", window.scrollY > 16);
+  };
 
-    cursorCircle.style.left = circleX + 'px';
-    cursorCircle.style.top = circleY + 'px';
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
 
-    requestAnimationFrame(animateCursor);
-}
-animateCursor();
+  const closeMenu = () => {
+    if (!menuButton || !navigation) return;
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open navigation");
+    navigation.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+  };
 
-// Hover Interactions
-const hoverTargets = document.querySelectorAll('a, button, .hover-underline-purple, .cursor-none-target');
-
-hoverTargets.forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('hover-link'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('hover-link'));
-});
-
-// Animations
-// 1. Hero Reveal
-const tl = gsap.timeline();
-
-tl.from(".logo-reveal", {
-    y: -50,
-    opacity: 0,
-    duration: 1,
-    ease: "power4.out"
-})
-    .from(".hero-text h1", {
-        y: 100,
-        opacity: 0,
-        duration: 1.2,
-        stagger: 0.1,
-        ease: "power4.out"
-    }, "-=0.5")
-    .from(".hero-element", {
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power2.out"
-    }, "-=0.8");
-
-// 2. Scroll Animations (Simple fade ups)
-gsap.utils.toArray("section").forEach(section => {
-    gsap.from(section, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-        }
+  if (menuButton && navigation) {
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Open navigation" : "Close navigation");
+      navigation.classList.toggle("is-open", !isOpen);
+      document.body.classList.toggle("menu-open", !isOpen);
     });
-});
 
-console.log("V6 Editorial Loaded.");
+    navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+        menuButton.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (
+        navigation.classList.contains("is-open") &&
+        !navigation.contains(event.target) &&
+        !menuButton.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 800) closeMenu();
+    });
+  }
+
+  const revealElements = [...document.querySelectorAll(".reveal")];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealElements.forEach((element) => element.classList.add("is-visible"));
+  } else {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8%", threshold: 0.08 },
+    );
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+  }
+
+  const sections = [...document.querySelectorAll("main section[id]")];
+
+  if ("IntersectionObserver" in window && navLinks.length > 0) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible) return;
+
+        navLinks.forEach((link) => {
+          const active = link.getAttribute("href") === `#${visible.target.id}`;
+          if (active) link.setAttribute("aria-current", "true");
+          else link.removeAttribute("aria-current");
+        });
+      },
+      { rootMargin: "-30% 0px -55%", threshold: [0.05, 0.2, 0.5] },
+    );
+
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+})();
