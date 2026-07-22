@@ -1,40 +1,87 @@
-# Uditha Manohara Prasad — Redesigned Neziora Portfolio
+# Uditha Manohara Prasad — Neziora Portfolio
 
-A dependency-free static portfolio designed for GitHub Pages and the custom domain `udithamanohara.dev`.
+A complete static portfolio replacement for `https://udithamanohara.dev/`, redesigned around Uditha Manohara Prasad's current identity as a software engineer and the founder of Neziora Solutions.
 
-## Design direction
+## Included
 
-The redesign uses an original “solution map / innovation dossier” visual system inspired by Uditha’s problem-first approach. It uses the approved Neziora logo and colour palette without changing the logo artwork.
+- `index.html` — complete semantic portfolio page
+- `style.css` — responsive Neziora-branded design
+- `script.js` — accessible mobile navigation, active sections, and reduced-motion-safe reveal effects
+- `robots.txt` — crawler instructions
+- `sitemap.xml` — homepage sitemap
+- `site.webmanifest` — installable site metadata
+- `404.html` — branded GitHub Pages error page
+- `CNAME` — custom domain configuration for `udithamanohara.dev`
+- `.nojekyll` — prevents GitHub Pages from applying Jekyll processing
+- `assets/brand/` — approved Neziora logo assets
+- `assets/icons/` — favicon and application icons
+- `assets/images/og-image.png` — 1200 × 630 social sharing image
 
-## SEO retained
+## Important content updates
 
-- Current title and meta description
-- Canonical URL
-- Open Graph and X/Twitter cards
-- `ProfilePage`, `Person`, `WebSite`, and `Organization` JSON-LD
-- `robots.txt`
-- `sitemap.xml`
-- Semantic headings and sections
-- Server-visible content without JavaScript dependency
-- Accessible navigation and reduced-motion support
+The replacement removes public references to Crystonik Digital, Termodev, Imperizo, and other previous branding. It presents Neziora Solutions as the current venture and includes consistent visible content, metadata, and structured data.
 
 ## Deploy to GitHub Pages
 
-Replace the files in the existing repository with this package, then run:
+1. Back up the current repository.
+2. Delete or archive the old website files.
+3. Copy every file and folder from this package into the repository root.
+4. Commit and push:
 
 ```bash
 git add .
-git commit -m "Redesign portfolio with Neziora problem-first identity"
+git commit -m "Replace portfolio with current Neziora identity"
 git push origin main
 ```
 
-After the site is live, inspect `https://udithamanohara.dev/` in Google Search Console and request indexing once.
+5. In GitHub, open **Settings → Pages**.
+6. Confirm the site is deployed from the correct branch and root folder.
+7. Confirm the custom domain is `udithamanohara.dev` and HTTPS is enabled.
 
-## Files
+## After deployment
 
-- `index.html` — website content and SEO metadata
-- `style.css` — complete responsive design
-- `script.js` — navigation, reveal behaviour, active section, and scroll progress
-- `404.html` — branded error page
-- `assets/` — approved Neziora branding and social images
-- `robots.txt`, `sitemap.xml`, `site.webmanifest`, `CNAME` — indexing and deployment files
+Open these URLs and confirm they work:
+
+- `https://udithamanohara.dev/`
+- `https://udithamanohara.dev/robots.txt`
+- `https://udithamanohara.dev/sitemap.xml`
+- `https://udithamanohara.dev/site.webmanifest`
+- `https://udithamanohara.dev/assets/images/og-image.png`
+
+Then use Google Search Console:
+
+1. Inspect `https://udithamanohara.dev/`.
+2. Test the live URL.
+3. Request indexing once.
+4. Submit `https://udithamanohara.dev/sitemap.xml`.
+5. Monitor indexing, enhancement, and page experience reports.
+
+Search engines and AI-generated summaries update after recrawling and reprocessing. No code can guarantee rankings, an exact description, a knowledge panel, or a specific update time.
+
+## Before publishing
+
+Verify these details are still correct:
+
+- Contact email: `udithamprasad@gmail.com`
+- LinkedIn: `https://www.linkedin.com/in/uditha-manohara`
+- GitHub: `https://github.com/uditha-manohara`
+- Facebook: `https://facebook.com/udithamanohara.dev`
+- X: `https://x.com/uditha_manohara`
+- Location: Colombo, Sri Lanka
+- Education wording
+- UMP Singlish description
+
+Remove any profile link that is no longer active.
+
+## When the Neziora website launches
+
+Add the final Neziora domain in two places:
+
+1. The visible Neziora section, as a button linking to the company site.
+2. The `Organization` object in the JSON-LD inside `index.html`, using a `url` and relevant official `sameAs` company profiles.
+
+Do not add an unconfirmed domain or social URL.
+
+## Performance notes
+
+The site uses no framework, package manager, external font, icon library, animation library, or client-rendered content. Important text is present directly in the HTML. JavaScript is only an enhancement; navigation and content remain readable without it.
