@@ -719,24 +719,24 @@ select {
   font-size: 0.95rem;
 }
 
-/* Freelance services */
-.freelance-intro {
+/* Software engineering services */
+.services-intro {
   display: grid;
   grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(2.5rem, 7vw, 7rem);
 }
 
-.freelance-intro .section-heading {
+.services-intro .section-heading {
   margin-bottom: 0;
 }
 
-.freelance-summary {
+.services-summary {
   align-self: end;
   color: var(--muted);
   font-size: 1.06rem;
 }
 
-.freelance-summary p {
+.services-summary p {
   max-width: 46rem;
   margin: 1.1rem 0 0;
 }
@@ -839,7 +839,7 @@ select {
   content: "";
 }
 
-.freelance-cta {
+.services-cta {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -851,18 +851,18 @@ select {
   background: #eff6ff;
 }
 
-.freelance-cta strong {
+.services-cta strong {
   color: var(--brand-navy);
   font-size: 1.06rem;
 }
 
-.freelance-cta p {
+.services-cta p {
   margin: 0.18rem 0 0;
   color: var(--muted);
   font-size: 0.9rem;
 }
 
-.freelance-cta .button {
+.services-cta .button {
   flex: 0 0 auto;
 }
 
@@ -1431,12 +1431,12 @@ select {
     gap: 2.5rem;
   }
 
-  .freelance-intro {
+  .services-intro {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  .freelance-cta {
+  .services-cta {
     align-items: flex-start;
     flex-direction: column;
   }

@@ -1,6 +1,6 @@
 # Uditha Manohara Prasad — Professional Portfolio
 
-A complete static portfolio for `https://udithamanohara.dev/`, presenting Uditha Manohara Prasad as a full-stack software engineer, professional freelancer, and the Founder & CEO of Neziora Solutions.
+A complete static portfolio for `https://udithamanohara.dev/`, focused on Uditha Manohara Prasad as a Software Engineer and Founder & CEO of Neziora Solutions. His professional freelance work remains represented throughout the searchable page content, descriptions, and structured data.
 
 ## Included
 
@@ -20,7 +20,7 @@ A complete static portfolio for `https://udithamanohara.dev/`, presenting Uditha
 
 ## Important content updates
 
-The site removes public references to Crystonik Digital, Termodev, Imperizo, and other previous branding. It presents Neziora Solutions as the current venture, adds dedicated freelance services, and showcases SecureShield, Neziora LeadFlow, MindSprint, and Crestline Graphics with real interface captures and verified live-site descriptions. The professional identity remains consistent across visible content, metadata, and structured data.
+The site removes public references to Crystonik Digital, Termodev, Imperizo, and other previous branding. It gives primary visual emphasis to Software Engineer and Founder & CEO of Neziora Solutions, while preserving Professional Freelancer as an additional searchable role across page content, metadata, and structured data. It also includes software engineering services and showcases SecureShield, Neziora LeadFlow, MindSprint, and Crestline Graphics with real interface captures and verified live-site descriptions.
 
 ## Deploy to GitHub Pages
 
@@ -31,7 +31,7 @@ The site removes public references to Crystonik Digital, Termodev, Imperizo, and
 
 ```bash
 git add .
-git commit -m "Add freelance services and update professional identity"
+git commit -m "Focus engineering and Neziora leadership identity"
 git push origin main
 ```
 
@@ -57,7 +57,7 @@ Then use Google Search Console:
 4. Submit `https://udithamanohara.dev/sitemap.xml`.
 5. Monitor indexing, enhancement, and page experience reports.
 
-Search engines and AI-generated summaries update after recrawling and reprocessing. No code can guarantee rankings, an exact description, a knowledge panel, or a specific update time. Keep the same wording—full-stack software engineer, professional freelancer, and Founder & CEO of Neziora Solutions—on authoritative profiles you control.
+Search engines and AI-generated summaries update after recrawling and reprocessing. No code can guarantee rankings, an exact description, a knowledge panel, or a specific update time. Keep Software Engineer and Founder & CEO of Neziora Solutions as the primary headline on authoritative profiles, while including professional freelancer in the biography or description.
 
 ## Before publishing
 

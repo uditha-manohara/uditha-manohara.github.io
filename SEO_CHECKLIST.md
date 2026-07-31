@@ -4,7 +4,8 @@
 
 - [x] One clear H1 containing the full name
 - [x] Current Neziora identity visible in the hero and company section
-- [x] Freelance identity and services visible in crawlable page content
+- [x] Software Engineer and Founder & CEO form the primary visible identity
+- [x] Professional Freelancer remains present in searchable page content and metadata
 - [x] Four real projects shown with descriptive text, screenshots, and live links
 - [x] Unique title and meta description
 - [x] Canonical URL
@@ -22,7 +23,7 @@
 - [x] Person
 - [x] Neziora Solutions Organization
 - [x] Founder relationship
-- [x] Founder & CEO role used consistently
+- [x] Founder & CEO role used consistently alongside Software Engineer
 - [x] Freelance service and provider relationship
 - [x] SoftwareApplication and WebSite entities for selected projects
 - [x] Current social profile links
