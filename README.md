@@ -1,6 +1,6 @@
-# Uditha Manohara Prasad — Neziora Portfolio
+# Uditha Manohara Prasad — Professional Portfolio
 
-A complete static portfolio replacement for `https://udithamanohara.dev/`, redesigned around Uditha Manohara Prasad's current identity as a software engineer and the founder of Neziora Solutions.
+A complete static portfolio for `https://udithamanohara.dev/`, presenting Uditha Manohara Prasad as a full-stack software engineer, professional freelancer, and the Founder & CEO of Neziora Solutions.
 
 ## Included
 
@@ -16,10 +16,11 @@ A complete static portfolio replacement for `https://udithamanohara.dev/`, redes
 - `assets/brand/` — approved Neziora logo assets
 - `assets/icons/` — favicon and application icons
 - `assets/images/og-image.png` — 1200 × 630 social sharing image
+- `assets/projects/` — current interface captures from the four live featured projects
 
 ## Important content updates
 
-The replacement removes public references to Crystonik Digital, Termodev, Imperizo, and other previous branding. It presents Neziora Solutions as the current venture and includes consistent visible content, metadata, and structured data.
+The site removes public references to Crystonik Digital, Termodev, Imperizo, and other previous branding. It presents Neziora Solutions as the current venture, adds dedicated freelance services, and showcases SecureShield, Neziora LeadFlow, MindSprint, and Crestline Graphics with real interface captures and verified live-site descriptions. The professional identity remains consistent across visible content, metadata, and structured data.
 
 ## Deploy to GitHub Pages
 
@@ -30,7 +31,7 @@ The replacement removes public references to Crystonik Digital, Termodev, Imperi
 
 ```bash
 git add .
-git commit -m "Replace portfolio with current Neziora identity"
+git commit -m "Add freelance services and update professional identity"
 git push origin main
 ```
 
@@ -56,7 +57,7 @@ Then use Google Search Console:
 4. Submit `https://udithamanohara.dev/sitemap.xml`.
 5. Monitor indexing, enhancement, and page experience reports.
 
-Search engines and AI-generated summaries update after recrawling and reprocessing. No code can guarantee rankings, an exact description, a knowledge panel, or a specific update time.
+Search engines and AI-generated summaries update after recrawling and reprocessing. No code can guarantee rankings, an exact description, a knowledge panel, or a specific update time. Keep the same wording—full-stack software engineer, professional freelancer, and Founder & CEO of Neziora Solutions—on authoritative profiles you control.
 
 ## Before publishing
 
@@ -67,9 +68,11 @@ Verify these details are still correct:
 - GitHub: `https://github.com/uditha-manohara`
 - Facebook: `https://facebook.com/udithamanohara.dev`
 - X: `https://x.com/uditha_manohara`
+- Fiverr: add the final public profile URL after the seller profile is live
 - Location: Colombo, Sri Lanka
 - Education wording
 - UMP Singlish description
+- Featured-project descriptions, screenshots, and live URLs
 
 Remove any profile link that is no longer active.
 

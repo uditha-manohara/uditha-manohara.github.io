@@ -4,6 +4,8 @@
 
 - [x] One clear H1 containing the full name
 - [x] Current Neziora identity visible in the hero and company section
+- [x] Freelance identity and services visible in crawlable page content
+- [x] Four real projects shown with descriptive text, screenshots, and live links
 - [x] Unique title and meta description
 - [x] Canonical URL
 - [x] Open Graph and Twitter card metadata
@@ -20,6 +22,9 @@
 - [x] Person
 - [x] Neziora Solutions Organization
 - [x] Founder relationship
+- [x] Founder & CEO role used consistently
+- [x] Freelance service and provider relationship
+- [x] SoftwareApplication and WebSite entities for selected projects
 - [x] Current social profile links
 - [x] Date modified
 
@@ -41,5 +46,6 @@
 - [ ] Submit sitemap in Search Console
 - [ ] Request indexing for the homepage
 - [ ] Update LinkedIn, GitHub, Facebook, X, and other profiles with the same current biography
+- [ ] Add the Fiverr profile to the website and structured `sameAs` links after it is live
 - [ ] Remove or update public old-brand pages still controlled by the founder
 - [ ] Add the final Neziora company domain after launch
