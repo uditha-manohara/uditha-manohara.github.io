@@ -36,7 +36,7 @@ nav a.bt{color:#fff}nav a.bt:hover{color:var(--red)}
 .facts{margin:0;border:1px solid var(--line);background:var(--card);padding:.4rem 1.4rem}.facts div{display:grid;grid-template-columns:8.5rem 1fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
 .facts div:last-child{border:0}.facts dt{font:300 .75rem Jost,Arial;letter-spacing:.2em;text-transform:uppercase;color:var(--red);padding-top:.2rem}.facts dd{margin:0;color:var(--ink);font-size:.95rem}.facts a{color:var(--ink);border-bottom:1px solid var(--red)}
 .g3,.g4{display:grid;gap:1.2rem;margin-top:2rem}.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin-top:0}
-.cd{background:var(--card);padding:1.8rem;border:1px solid var(--line);border-top:2px solid var(--red);transition:transform .3s,border-color .3s}.cd:hover{transform:translateY(-4px)}.cd p{margin:0 0 .8rem}
+.cd{background:var(--card);padding:1.8rem;border:1px solid var(--line);border-top:2px solid var(--red);transition:translate .3s,border-color .3s}.cd:hover{translate:0 -4px}.cd p{margin:0 0 .8rem}
 .cd>b{display:block;font:300 .78rem Jost,Arial;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:1.1rem}
 .tk{list-style:none;margin:1rem 0 0;padding:0}.tk li{padding:.35rem 0 .35rem 1.2rem;position:relative;color:var(--mut);font-size:.92rem}.tk li::before{content:"";position:absolute;left:0;top:.95rem;width:6px;height:6px;background:var(--red)}
 .cta{margin-top:2.2rem;color:var(--ink)}.ul{color:var(--ink);border-bottom:1px solid var(--red);padding-bottom:1px}.ul:hover{color:var(--red)}
