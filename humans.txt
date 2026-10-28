@@ -1,0 +1,8 @@
+/* TEAM */
+Founder: Uditha Manohara Prasad
+Site: https://udithamanohara.dev
+Location: Colombo, Sri Lanka
+
+/* SITE */
+Last update: 2026-10-29
+Standards: HTML5, CSS3, JavaScript, GSAP

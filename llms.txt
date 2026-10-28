@@ -1,0 +1,63 @@
+# Uditha Manohara Prasad
+
+> Uditha Manohara Prasad (also known as Uditha Manohara) is a Sri Lankan Software Engineer based in Colombo, Sri Lanka. He is completing a BSc (Hons) in Software Engineering, works as a professional freelancer in full-stack development, and is the Founder & CEO of Neziora (formerly Neziora Solutions).
+
+## Quick facts
+- Full name: Uditha Manohara Prasad (also: Uditha Manohara)
+- Roles: Software Engineer (undergraduate); Professional Freelancer; Founder & CEO of Neziora
+- Location: Colombo, Sri Lanka
+- Education: BSc (Hons) Software Engineering, Birmingham City University, via the Java Institute for Advanced Technology. Also studied through Harvard CS50x and the University of Helsinki Java Programming I & II.
+- Website: https://udithamanohara.dev/
+- Email: udithamprasad@gmail.com
+- WhatsApp: +94 76 182 3815
+
+## Neziora
+Neziora (formerly Neziora Solutions) is a technology brand built around the future, founded by Uditha Manohara Prasad. Tagline: "Building what's next." Beliefs: Knowledge (know your craft), Vision (look ahead), Connection (bring both together). Vision: to build technology the world can depend on.
+- WhatsApp: +94 72 654 5635
+
+## Services
+Freelance software engineering for individuals, startups and small businesses: responsive business websites, full-stack web applications, and improvements to existing websites.
+
+## Selected projects
+- [SecureShield](https://shield-platform.web.app/): A centralized platform designed to bring privacy, recovery, verification, monitoring and digital-safety services together under one account.
+- [Neziora LeadFlow](https://neziora-leadflow.netlify.app/): A customer-workflow platform for service businesses, connecting inquiries, follow-ups, quotations, customers and active jobs in one private workspace.
+- [MindSprint](https://mindsprintlk.vercel.app/): A study-oriented platform engineered for focused work, personal study sessions and progress that can be synchronized through a Google account.
+- [Crestline Graphics](https://crestlinegraphics.com/): A visually distinctive web system for a graphics agency, combining brand presentation, selected work, project enquiries and authenticated client-facing workflows.
+- UMP Singlish: a Singlish-to-Sinhala Unicode conversion tool (https://github.com/uditha-manohara)
+
+## Profiles: Uditha Manohara Prasad
+- LinkedIn: https://www.linkedin.com/in/uditha-manohara/
+- Facebook: https://www.facebook.com/udithamprasad/
+- Instagram: https://www.instagram.com/uditha.manohara/
+- X (Twitter): https://x.com/uditha_manohara
+- TikTok: https://www.tiktok.com/@udithamprasad
+- GitHub: https://github.com/uditha-manohara
+- WhatsApp: https://wa.me/94761823815
+
+## Profiles: Neziora
+- LinkedIn: https://www.linkedin.com/company/neziora
+- Facebook: https://www.facebook.com/neziora/
+- Instagram: https://www.instagram.com/nezioraofficial/
+- X (Twitter): https://x.com/Neziora
+- TikTok: https://www.tiktok.com/@neziora
+- WhatsApp: https://wa.me/94726545635
+
+## Frequently asked
+### Who is Uditha Manohara Prasad?
+Uditha Manohara Prasad, also known as Uditha Manohara, is a Sri Lankan Software Engineer based in Colombo, Sri Lanka. He is completing a BSc (Hons) in Software Engineering, works as a professional freelancer in full-stack development, and is the Founder & CEO of Neziora.
+
+### What is Neziora?
+Neziora is a technology brand founded by Uditha Manohara Prasad and built around the future. Its tagline is “Building what’s next.” It stands on three beliefs: Knowledge, Vision and Connection, and its vision is to build technology the world can depend on.
+
+### Is Neziora the same as Neziora Solutions?
+Yes. Neziora was previously known as Neziora Solutions. The brand now operates simply as Neziora, with the tagline “Building what’s next.”
+
+### What services does Uditha Manohara Prasad offer?
+Freelance software engineering for individuals, startups and small businesses: responsive business websites, full-stack web applications, and improvements to existing websites, delivered with a clear scope, a realistic plan and direct communication.
+
+### What has Uditha Manohara Prasad built?
+Selected projects include SecureShield (a digital-safety platform in development), Neziora LeadFlow (a lead, quotation and job-management platform), MindSprint (a study-focus platform with an AI quiz generator), the Crestline Graphics web system, and UMP Singlish, a Singlish-to-Sinhala Unicode converter.
+
+### How can I contact Uditha Manohara Prasad or Neziora?
+Email udithamprasad@gmail.com, or message Uditha on WhatsApp at +94 76 182 3815. Neziora is on WhatsApp at +94 72 654 5635, and both have profiles on LinkedIn, Facebook, Instagram, X and TikTok, linked in the Contact section of this page.
+

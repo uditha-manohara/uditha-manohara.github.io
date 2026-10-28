@@ -1,12 +1,12 @@
 {
   "name": "Uditha Manohara Prasad",
   "short_name": "Uditha",
-  "description": "Official portfolio of Uditha Manohara Prasad, a Sri Lankan Software Engineer and Founder and CEO of Neziora Solutions who also works as a professional freelancer.",
+  "description": "Official portfolio of Uditha Manohara Prasad, Software Engineer and Founder & CEO of Neziora.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#0f172a",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
   "icons": [
     {
       "src": "/assets/icons/icon-192.png",
@@ -16,7 +16,8 @@
     {
       "src": "/assets/icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
