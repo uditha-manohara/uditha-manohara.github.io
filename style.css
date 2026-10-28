@@ -11,7 +11,7 @@ img,svg{max-width:100%}a{color:inherit;text-decoration:none}p{margin:0 0 1rem;co
 .lb{font:300 .76rem/1.4 Jost,Arial,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:var(--mut);margin:0 0 1rem}
 h1,h2{font:400 clamp(1.5rem,5.4vw,3.6rem)/1.12 Michroma,Verdana,sans-serif;text-transform:uppercase;margin:0 0 1.2rem;overflow-wrap:anywhere}
 h2{font-size:clamp(1.2rem,3.5vw,2.2rem);line-height:1.25}h3{font:600 1.2rem/1.3 Sora,Arial,sans-serif;margin:0 0 .5rem}h4{font:600 1rem Sora,Arial;margin:0 0 .4rem}
-.sub{margin:3.5rem 0 1.2rem}.stmt{font:600 clamp(1.15rem,2.7vw,1.75rem)/1.3 Sora,Arial,sans-serif;color:var(--ink);margin:0 0 1.1rem}.pq{border-left:3px solid var(--red);margin:1.8rem 0 0;padding:.3rem 0 .3rem 1.4rem;font:600 clamp(1.05rem,2vw,1.3rem)/1.55 Sora,Arial,sans-serif;color:var(--ink)}.lead{font-size:clamp(1rem,1.7vw,1.18rem);max-width:46rem}
+.sub{margin:3.5rem 0 1.2rem}.lead{font-size:clamp(1rem,1.7vw,1.18rem);max-width:46rem}
 #pg{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:0 50%;z-index:70}
 .hd{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
 .hd .w{display:flex;align-items:center;justify-content:space-between;height:68px}
